@@ -2,6 +2,7 @@
 <template>
   <div id="app">
     <router-view/>
+    dsadasdas asd
   </div>
 </template>
 
