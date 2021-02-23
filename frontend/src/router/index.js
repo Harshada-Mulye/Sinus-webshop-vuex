@@ -4,6 +4,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> c436507d7e3f060162f2a9e421d4fcedcc541705
   {
     path: '/about',
     name: 'About',
