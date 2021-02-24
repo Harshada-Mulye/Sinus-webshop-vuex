@@ -4,17 +4,17 @@
     <main>
       <ShopButton />
     </main>
-    <Footer />
+    <FooterComp />
   </div>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
 import ShopButton from "../components/ShopButton.vue";
-import Footer from "../components/Footer.vue";
+import FooterComp from "../components/FooterComp.vue";
 
 export default {
-  components: { Header, ShopButton, Footer },
+  components: { Header, ShopButton, FooterComp },
 };
 </script>
 

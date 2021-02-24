@@ -1,20 +1,16 @@
 <template>
   <div>
-<<<<<<< HEAD
     <Header />
       <h1>Product</h1>
-    <Footer />
-=======
-      <h1>Product</h1>
->>>>>>> 831e4e7d78311143ed5892f21f5ad236d1cece57
+    <FooterComp />
   </div>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
+import FooterComp from "../components/FooterComp.vue";
 export default {
-  components: { Header, Footer },
+  components: { Header, FooterComp },
 };
 </script>
 
