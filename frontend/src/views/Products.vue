@@ -2,6 +2,9 @@
   <div>
     <Header />
       <h1>Product</h1>
+      <ProductList/>
+    
+      
     <FooterComp />
   </div>
 </template>
@@ -9,13 +12,14 @@
 <script>
 import Header from "../components/Header.vue";
 import FooterComp from "../components/FooterComp.vue";
+import ProductList from "../components/ProductList.vue";
 
 export default {
-  components: { Header, FooterComp },
-  created() {
-    this.$store.dispatch("getProducts")
+  components: { Header, FooterComp,ProductList },
+  
   }
-};
+  
+
 </script>
 
 <style scoped>
