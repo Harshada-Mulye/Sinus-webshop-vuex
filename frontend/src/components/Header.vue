@@ -2,12 +2,12 @@
   <div>
     <div class="container">
       <div>
-        <img class="logo" src="../assets/Logo.png" alt="Logo" @click="home" />
+        <img class="logo" src="../assets/logo.svg" alt="Logo" @click="home" />
       </div>
       <div class="right-container">
         <div class="cart-container">
           <div>
-            <img src="../assets/Cart-icon.png" alt="Cart icon" @click="cart" />
+            <img src="../assets/cart-icon.svg" alt="Cart icon" @click="cart" />
           </div>
           <p>{{ orderSum }}kr</p>
         </div>
@@ -15,17 +15,17 @@
         <div class="social-media">
           <img
             class="socialMedia-img"
-            src="../assets/Facebook.png"
+            src="../assets/facebook.svg"
             alt="Facebook icon"
           />
           <img
             class="socialMedia-img"
-            src="../assets/Instagram.png"
+            src="../assets/instagram.svg"
             alt="Instagram icon"
           />
           <img
             class="socialMedia-img"
-            src="../assets/Twitter.png"
+            src="../assets/twitter.svg"
             alt="Twitter icon"
           />
         </div>
@@ -40,7 +40,7 @@
           <!-- Lägg till hover funktion -->
           <img
             class="menu-img"
-            src="../assets/Menu.png"
+            src="../assets/menu.svg"
             alt="Menu"
             @click="openMenu"
           />
@@ -64,7 +64,7 @@
 export default {
   data() {
     return {
-        /* Lägg till riktiga order summan */
+      /* Lägg till riktiga order summan */
       orderSum: 0.0,
       showMenu: false,
     };
@@ -74,11 +74,11 @@ export default {
       if (this.$route.name != "Home") this.$router.push("/");
     },
     cart() {
-        /* Lägg till funktion för att gå till kassan */
+      /* Lägg till funktion för att gå till kassan */
       console.log("orders");
     },
     login() {
-        /* Lägg till funktion för att logga in */
+      /* Lägg till funktion för att logga in */
       console.log("login");
     },
     openMenu() {
