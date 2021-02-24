@@ -1,8 +1,12 @@
 <template>
   <div>
+<<<<<<< HEAD
     <Header />
       <h1>Product</h1>
     <Footer />
+=======
+      <h1>Product</h1>
+>>>>>>> 831e4e7d78311143ed5892f21f5ad236d1cece57
   </div>
 </template>
 
