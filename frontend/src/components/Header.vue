@@ -33,7 +33,7 @@
         <div class="menu">
           <img
             class="login"
-            src="../assets/icons/login.png"
+            src="../assets/icons/login.svg"
             alt="login"
             @click="login"
           />
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       /* Lägg till riktiga order summan */
-      orderSum: 0.0,
+      orderSum: 0,
       showMenu: false,
     };
   },
@@ -121,8 +121,8 @@ p {
   cursor: pointer;
 }
 .login {
-  width: 50px;
-  margin-right: 20px;
+  width: 48px;
+  margin-right: 30px;
 }
 .login:hover {
   cursor: pointer;
