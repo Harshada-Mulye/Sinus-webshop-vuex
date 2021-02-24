@@ -33,7 +33,7 @@
         <div class="menu">
           <img
             class="login"
-            src="../assets/login.png"
+            src="../assets/icons/login.png"
             alt="login"
             @click="login"
           />

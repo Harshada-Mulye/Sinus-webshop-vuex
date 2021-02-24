@@ -22,7 +22,7 @@
         alt="Twitter icon"
       />
     </div>
-    <img src="../assets/icons/klarna-img.svg" alt="klarna" />
+    <img src="../assets/icons/klarna.jpg" alt="klarna" />
   </div>
 </template>
 
