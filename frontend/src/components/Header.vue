@@ -2,33 +2,26 @@
   <div>
     <div class="container">
       <div>
-        <img class="logo" src="../assets/icons/logo.svg" alt="Logo" @click="home" />
+        <img
+          class="logo"
+          src="../assets/icons/logo.svg"
+          alt="Logo"
+          @click="home"
+        />
       </div>
       <div class="right-container">
         <div class="cart-container">
           <div>
-            <img src="../assets/icons/cart-icon.svg" alt="Cart icon" @click="cart" />
+            <img
+              src="../assets/icons/cart-icon.svg"
+              alt="Cart icon"
+              @click="cart"
+            />
           </div>
           <p>{{ orderSum }}kr</p>
         </div>
 
-        <div class="social-media">
-          <img
-            class="socialMedia-img"
-            src="../assets/icons/facebook.svg"
-            alt="Facebook icon"
-          />
-          <img
-            class="socialMedia-img"
-            src="../assets/icons/instagram.svg"
-            alt="Instagram icon"
-          />
-          <img
-            class="socialMedia-img"
-            src="../assets/icons/twitter.svg"
-            alt="Twitter icon"
-          />
-        </div>
+        <SocialMedia />
 
         <div class="menu">
           <img
@@ -61,7 +54,11 @@
 </template>
 
 <script>
+import SocialMedia from "../components/SocialMedia.vue";
+
 export default {
+  components: { SocialMedia },
+
   data() {
     return {
       /* Lägg till riktiga order summan */
@@ -110,15 +107,6 @@ export default {
 }
 p {
   font-family: "Electrolize", sans-serif;
-}
-.social-media {
-  margin-left: 150px;
-}
-.socialMedia-img {
-  margin-left: 15px;
-}
-.social-media:hover {
-  cursor: pointer;
 }
 .login {
   width: 48px;

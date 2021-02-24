@@ -5,29 +5,19 @@
       <h2>Villkor</h2>
       <h2>Kontakt</h2>
     </div>
-    <div class="social-media">
-      <img
-        class="socialMedia-img"
-        src="../assets/icons/facebook.svg"
-        alt="Facebook icon"
-      />
-      <img
-        class="socialMedia-img"
-        src="../assets/icons/instagram.svg"
-        alt="Instagram icon"
-      />
-      <img
-        class="socialMedia-img"
-        src="../assets/icons/twitter.svg"
-        alt="Twitter icon"
-      />
-    </div>
+
+    <SocialMedia />
+
     <img src="../assets/icons/klarna.jpg" alt="klarna" />
   </div>
 </template>
 
 <script scoped>
-export default {};
+import SocialMedia from "../components/SocialMedia.vue";
+
+export default {
+  components: { SocialMedia },
+};
 </script>
 
 <style scoped>
@@ -38,15 +28,15 @@ export default {};
   padding: 10px 20px 10px 20px;
 }
 h2 {
-    display: inline;
-    margin-right: 30px;
-    color: black;
+  display: inline;
+  margin-right: 30px;
+  color: black;
 }
 h2:hover {
   cursor: pointer;
 }
 .socialMedia-img {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 .social-media:hover {
   cursor: pointer;
