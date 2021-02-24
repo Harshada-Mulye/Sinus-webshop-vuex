@@ -1,11 +1,17 @@
 <template>
   <div>
-    <button>Shop</button>
+    <button @click="goToShop">Shop</button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        goToShop() {
+            this.$router.push('/products')
+        }
+    }
+};
 </script>
 
 <style scoped>
