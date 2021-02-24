@@ -8,21 +8,21 @@
     <div class="social-media">
       <img
         class="socialMedia-img"
-        src="../assets/Facebook.png"
+        src="../assets/icons/facebook.svg"
         alt="Facebook icon"
       />
       <img
         class="socialMedia-img"
-        src="../assets/Instagram.png"
+        src="../assets/icons/instagram.svg"
         alt="Instagram icon"
       />
       <img
         class="socialMedia-img"
-        src="../assets/Twitter.png"
+        src="../assets/icons/twitter.svg"
         alt="Twitter icon"
       />
     </div>
-    <img src="../assets/klarna-img.svg" alt="klarna" />
+    <img src="../assets/icons/klarna-img.svg" alt="klarna" />
   </div>
 </template>
 

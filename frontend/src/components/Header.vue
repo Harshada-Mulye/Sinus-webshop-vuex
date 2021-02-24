@@ -2,12 +2,12 @@
   <div>
     <div class="container">
       <div>
-        <img class="logo" src="../assets/logo.svg" alt="Logo" @click="home" />
+        <img class="logo" src="../assets/icons/logo.svg" alt="Logo" @click="home" />
       </div>
       <div class="right-container">
         <div class="cart-container">
           <div>
-            <img src="../assets/cart-icon.svg" alt="Cart icon" @click="cart" />
+            <img src="../assets/icons/cart-icon.svg" alt="Cart icon" @click="cart" />
           </div>
           <p>{{ orderSum }}kr</p>
         </div>
@@ -15,17 +15,17 @@
         <div class="social-media">
           <img
             class="socialMedia-img"
-            src="../assets/facebook.svg"
+            src="../assets/icons/facebook.svg"
             alt="Facebook icon"
           />
           <img
             class="socialMedia-img"
-            src="../assets/instagram.svg"
+            src="../assets/icons/instagram.svg"
             alt="Instagram icon"
           />
           <img
             class="socialMedia-img"
-            src="../assets/twitter.svg"
+            src="../assets/icons/twitter.svg"
             alt="Twitter icon"
           />
         </div>
@@ -40,7 +40,7 @@
           <!-- Lägg till hover funktion -->
           <img
             class="menu-img"
-            src="../assets/menu.svg"
+            src="../assets/icons/menu.svg"
             alt="Menu"
             @click="openMenu"
           />

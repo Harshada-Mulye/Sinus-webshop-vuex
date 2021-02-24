@@ -20,7 +20,7 @@ export default {
 
 <style>
 main {
-  background: url("../assets/background-img.svg") center center no-repeat;
+  background: url("../assets/background-img.jpg") center center no-repeat;
   height: 92vh;
   display: flex;
   justify-content: center;
