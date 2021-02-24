@@ -4,15 +4,17 @@
     <main>
         <ShopButton />
     </main>
+    <Footer />
 </div>
 </template>
 
 <script>
 import Header from '../components/Header.vue'
 import ShopButton from '../components/ShopButton.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
-    components: { Header, ShopButton }
+    components: { Header, ShopButton, Footer }
 
 }
 </script>
@@ -20,7 +22,7 @@ export default {
 <style>
 main {
     background: url('../assets/background-img.jpg') center center no-repeat;
-    height: 100vh;
+    height: 92vh;
     display: flex;
     justify-content: center;
     align-items: center;

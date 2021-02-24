@@ -164,7 +164,6 @@ a:visited {
 }
 a:hover {
   cursor: pointer;
-  border-bottom: 3px solid#E84B38;
 }
 
 a:active {
