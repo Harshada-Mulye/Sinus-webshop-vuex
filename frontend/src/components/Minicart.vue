@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <span>1 * 799</span>
+      <span> 1* {{item.price}}</span>
       <hr />
     </section>
     <div>
