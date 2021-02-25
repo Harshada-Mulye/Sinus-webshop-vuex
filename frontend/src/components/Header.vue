@@ -24,14 +24,14 @@
               <Minicart />
             </div>
           </div>
-          <p>{{ Amount }}</p>
+          <p>{{ Amount }}kr</p>
         </div>
         <div class="menu">
           <img
             class="login"
             src="../assets/icons/login.svg"
             alt="login"
-            @click="login"
+            @click="openLogin"
           />
           <!-- Lägg till hover funktion -->
           <img
@@ -49,8 +49,7 @@
         <router-link to="/products">Produkter</router-link>
         <!-- Lägg till path -->
         <router-link to="/">Varukorg</router-link>
-        <!-- Lägg till path -->
-        <router-link to="/">Logga in</router-link>
+        <a href="#" @click="openLogin">Logga In</a>
       </nav>
     </transition>
   </div>
@@ -75,17 +74,15 @@ export default {
     home() {
       if (this.$route.name != "Home") this.$router.push("/");
     },
-
-    login() {
-      /* Lägg till funktion för att logga in */
-      console.log("login");
-    },
-    openMenu() {
-      this.showMenu = !this.showMenu;
-    },
     cart() {
       this.showCart = !this.showCart;
       this.Amount = null;
+    },
+    openLogin() {
+      this.$store.dispatch("openLogin");
+    },
+    openMenu() {
+      this.showMenu = !this.showMenu;
     },
   },
 };
@@ -155,6 +152,8 @@ a {
   font-weight: bold;
   font-size: 20px;
   padding: 5px;
+  color: #e84b38;
+  text-transform: capitalize;
 }
 a:visited {
   color: #e84b38;

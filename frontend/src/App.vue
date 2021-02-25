@@ -1,9 +1,17 @@
-
 <template>
   <div id="app">
+    <Login v-if="this.$store.state.login.loggedIn" />
     <router-view />
   </div>
 </template>
+
+<script>
+import Login from "@/components/Login.vue";
+
+export default {
+  components: { Login },
+};
+</script>
 
 <style>
 * {
@@ -16,5 +24,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: relative;
 }
 </style>
