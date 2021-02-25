@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Login v-if="this.$store.state.login.loggedIn" />
+    <Login v-if="this.$store.state.user.loggedIn" />
     <router-view />
   </div>
 </template>

@@ -2,8 +2,11 @@ import axios from "axios";
 
 const URL = "http://localhost:5000";
 const PRODUCTS = `${URL}/api/products/`;
+const REGISTER_USER = `${URL}/api/register/`;
 const AUTH = `${URL}/api/auth/`;
-const ORDER = `${URL}/api/orders/`;
+const USER = `${URL}/api/me`;
+const ORDERS = `${URL}/api/orders/`;
+
 export async function getProducts() {
   try {
     const response = await axios.get(PRODUCTS)
@@ -13,17 +16,44 @@ export async function getProducts() {
   }
 }
 
-export async function registerUser(obj) {
+export async function createUser(obj) {
   try {
-    const response = await axios.post(AUTH, obj)
-    return response
+    const response = await axios.post(REGISTER_USER, obj)
+    /* Console log kan tas bort sen */
+    console.log(response)
   } catch (error) {
     console.log(error);
   }
 }
+
+export async function login(obj) {
+  try {
+    const response = await axios.post(AUTH, obj)
+    setToken(response.data.token);
+    /* Console log kan tas bort sen */
+    console.log(response.data.token)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function setToken(token) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
+export async function getUser() {
+  const response = await axios.get(USER)
+  return response
+}
+
+export async function getOrders() {
+  const response = await axios.get(ORDERS)
+  return response
+}
+
 export async function postOrder(obj) {
   try {
-    const response = await axios.post(ORDER, obj)
+    const response = await axios.post(ORDERS, obj)
     return response
   } catch (error) {
     console.log(error);
