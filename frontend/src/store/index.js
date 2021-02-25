@@ -1,18 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as API from '../api/index.js';
+import login from "./login.js"
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products:[]
+    products:[],
   },
   mutations: {
     GET_PTODUCTS(state,payload)
     {
       state.products=payload
-    }
+    },
   },
   actions: {
     async getProducts(context) {
@@ -30,5 +31,6 @@ export default new Vuex.Store({
     },
   },
   modules: {
+    login: login,
   }
 })

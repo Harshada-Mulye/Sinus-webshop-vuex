@@ -28,7 +28,7 @@
             class="login"
             src="../assets/icons/login.svg"
             alt="login"
-            @click="login"
+            @click="openLogin"
           />
           <!-- Lägg till hover funktion -->
           <img
@@ -46,8 +46,7 @@
         <router-link to="/products">Produkter</router-link>
         <!-- Lägg till path -->
         <router-link to="/">Varukorg</router-link>
-        <!-- Lägg till path -->
-        <router-link to="/">Logga in</router-link>
+        <a href="#" @click="openLogin">Logga In</a>
       </nav>
     </transition>
   </div>
@@ -74,9 +73,8 @@ export default {
       /* Lägg till funktion för att gå till kassan */
       console.log("orders");
     },
-    login() {
-      /* Lägg till funktion för att logga in */
-      console.log("login");
+    openLogin() {
+      this.$store.dispatch("openLogin");
     },
     openMenu() {
       this.showMenu = !this.showMenu;
@@ -146,6 +144,8 @@ a {
   font-weight: bold;
   font-size: 20px;
   padding: 5px;
+  color: #e84b38;
+  text-transform: capitalize;
 }
 a:visited {
   color: #e84b38;
