@@ -10,20 +10,19 @@
         />
       </div>
       <div class="right-container">
-        
-
         <SocialMedia />
-<div class="cart-container">
+        <div class="cart-container">
           <div @click="cart" class="dropdown">
-            <img data-toggle="dropdown"  
-            aria-haspopup="true"
-             aria-expanded="false"
+            <img
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
               src="../assets/icons/cart-icon.svg"
               alt="Cart icon"
-               />
-                <div v-if="showCart" class="dropdown-content">
-                        <Minicart/>
-                    </div>
+            />
+            <div v-if="showCart" class="dropdown-content">
+              <Minicart />
+            </div>
           </div>
           <p>{{ Amount }}</p>
         </div>
@@ -58,25 +57,25 @@
 </template>
 
 <script>
-import Minicart from './Minicart.vue'
+import Minicart from "./Minicart.vue";
 import SocialMedia from "../components/SocialMedia.vue";
 
 export default {
-  components: { SocialMedia , Minicart },
+  components: { SocialMedia, Minicart },
 
   data() {
     return {
       /* Lägg till riktiga order summan */
       Amount: 0,
       showMenu: false,
-      showCart:false,
+      showCart: false,
     };
   },
   methods: {
     home() {
       if (this.$route.name != "Home") this.$router.push("/");
     },
-    
+
     login() {
       /* Lägg till funktion för att logga in */
       console.log("login");
@@ -84,10 +83,10 @@ export default {
     openMenu() {
       this.showMenu = !this.showMenu;
     },
-    cart(){
-      this.showCart=!this.showCart;
-      this.Amount=null
-    }
+    cart() {
+      this.showCart = !this.showCart;
+      this.Amount = null;
+    },
   },
 };
 </script>
@@ -108,8 +107,8 @@ export default {
 .cart-container {
   display: flex;
   align-items: center;
- margin-left:20px;
- margin-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .cart-container:hover {
   cursor: pointer;
@@ -167,18 +166,19 @@ a:hover {
 a:active {
   color: #e84b38;
 }
-.dropdown{
-   position: relative;
+.dropdown {
+  position: relative;
   display: inline-block;
- margin-right: 0;
+  margin-right: 0;
 }
-.dropdown-content{
-
- display:flex;
+.dropdown-content {
+  display: flex;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 300px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  /* background-color: orange; */
+  justify-content: center;
 }
 </style>
