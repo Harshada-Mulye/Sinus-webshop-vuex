@@ -5,8 +5,8 @@ const PRODUCTS = `${URL}/api/products/`;
 const REGISTER_USER = `${URL}/api/register/`;
 const AUTH = `${URL}/api/auth/`;
 const USER = `${URL}/api/me`;
-
 const ORDER = `${URL}/api/orders/`;
+
 export async function getProducts() {
   try {
     const response = await axios.get(PRODUCTS)
