@@ -5,7 +5,7 @@ const PRODUCTS = `${URL}/api/products/`;
 const REGISTER_USER = `${URL}/api/register/`;
 const AUTH = `${URL}/api/auth/`;
 const USER = `${URL}/api/me`;
-const ORDER = `${URL}/api/orders/`;
+const ORDERS = `${URL}/api/orders/`;
 
 export async function getProducts() {
   try {
@@ -46,9 +46,14 @@ export async function getUser() {
   return response
 }
 
+export async function getOrders() {
+  const response = await axios.get(ORDERS)
+  return response
+}
+
 export async function postOrder(obj) {
   try {
-    const response = await axios.post(ORDER, obj)
+    const response = await axios.post(ORDERS, obj)
     return response
   } catch (error) {
     console.log(error);

@@ -48,7 +48,7 @@
         <router-link to="/">Startsida</router-link>
         <router-link to="/products">Produkter</router-link>
         <a href="#" @click="openLogin">Logga In</a>
-        <router-link to="/account">My account</router-link>
+        <router-link to="/account" v-if="this.$store.state.user.currentUser">My account</router-link>
       </nav>
     </transition>
   </div>
