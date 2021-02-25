@@ -6,6 +6,7 @@ const REGISTER_USER = `${URL}/api/register/`;
 const AUTH = `${URL}/api/auth/`;
 const USER = `${URL}/api/me`;
 
+const ORDER = `${URL}/api/orders/`;
 export async function getProducts() {
   try {
     const response = await axios.get(PRODUCTS)
@@ -43,4 +44,13 @@ export function setToken(token) {
 export async function getUser() {
   const response = await axios.get(USER)
   return response
+}
+
+export async function postOrder(obj) {
+  try {
+    const response = await axios.post(ORDER, obj)
+    return response
+  } catch (error) {
+    console.log(error);
+  }
 }

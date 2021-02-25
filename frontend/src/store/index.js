@@ -18,9 +18,22 @@ export default new Vuex.Store({
     async getProducts(context) {
       const response = await API.getProducts()
       console.log(response);
-
-      context.commit('GET_PTODUCTS', response)
+     
+      context.commit('GET_PTODUCTS',response)
     },
+    async getOrder(context) {
+      const response = await API.getOrder()
+      console.log(response);
+     
+      context.commit('GET_ORDERS',response)
+    },
+    async postOrders(context,payload)
+    {
+      const response = await API.postOrder(payload);
+      console.log(response);
+
+      console.log(context);
+    }
   },
   modules: {
     user: user
