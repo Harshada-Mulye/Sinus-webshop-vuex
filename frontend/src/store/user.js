@@ -1,3 +1,5 @@
+import * as API from '../api/index.js';
+
 export default {
     state: () => ({
         loggedIn: false
@@ -16,6 +18,18 @@ export default {
         },
         closeLogin(context) {
             context.commit("closeLogin")
+        },
+        async createUser(context, payload) {
+            await API.createUser(payload);
+        },
+        async login(context, payload) {
+            await API.login(payload)
+        },
+        async getUser() {
+            const response = await API.getUser()
+            /* Console log kan tas bort sen */
+            console.log(response.data)
+
         }
     }
 }

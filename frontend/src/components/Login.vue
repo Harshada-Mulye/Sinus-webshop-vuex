@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <form @submit.prevent="">
+    <form>
       <div class="header">
         <h1>Mina sidor</h1>
-        <img src="@/assets/icons/close.svg" alt="close" @click="closeLogin"/>
+        <img src="@/assets/icons/close.svg" alt="close" @click="closeLogin" />
       </div>
       <input type="email" placeholder="Email" required v-model="email" />
       <input
@@ -12,8 +12,8 @@
         required
         v-model="password"
       />
-      <button>Logga In</button>
-      <button class="register">Registrera</button>
+      <button @click="login">Logga In</button>
+      <button class="register" @click="register">Registrera</button>
       <p>Glömt Lösenordet?</p>
     </form>
   </div>
@@ -28,10 +28,24 @@ export default {
     };
   },
   methods: {
-      closeLogin() {
-          this.$store.dispatch("closeLogin")
-      }
-  }
+    closeLogin() {
+      this.$store.dispatch("closeLogin");
+    },
+    register(e) {
+      e.preventDefault();
+      this.$router.push({ name: "Register" });
+      this.$store.dispatch("closeLogin");
+    },
+    login(e) {
+      const loginInfo = {
+        email: this.email,
+        password: this.password,
+      };
+      e.preventDefault();
+      this.$store.dispatch("login", loginInfo);
+      this.$store.dispatch("closeLogin");
+    },
+  },
 };
 </script>
 
@@ -55,7 +69,7 @@ form {
   justify-content: center;
   align-items: center;
   padding: 25px;
-  background: white;
+  background: #f6f6f6;
 }
 .header {
   display: flex;

@@ -47,9 +47,8 @@
       <nav v-show="showMenu">
         <router-link to="/">Startsida</router-link>
         <router-link to="/products">Produkter</router-link>
-        <!-- Lägg till path -->
-        <router-link to="/">Varukorg</router-link>
         <a href="#" @click="openLogin">Logga In</a>
+        <router-link to="/account">My account</router-link>
       </nav>
     </transition>
   </div>
