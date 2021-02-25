@@ -24,7 +24,7 @@
               <Minicart />
             </div>
           </div>
-          <p>{{ Amount }}</p>
+          <p>{{ Amount }}kr</p>
         </div>
         <div class="menu">
           <img
