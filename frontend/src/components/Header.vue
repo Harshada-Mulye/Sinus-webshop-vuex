@@ -74,26 +74,15 @@ export default {
     home() {
       if (this.$route.name != "Home") this.$router.push("/");
     },
-<<<<<<< HEAD
-    cart() {
-      /* Lägg till funktion för att gå till kassan */
-      console.log("orders");
-    },
-    openLogin() {
-      this.$store.dispatch("openLogin");
-=======
-
-    login() {
-      /* Lägg till funktion för att logga in */
-      console.log("login");
->>>>>>> 6f74cebf7924eebcc124deb3ed18f23ca90d9340
-    },
-    openMenu() {
-      this.showMenu = !this.showMenu;
-    },
     cart() {
       this.showCart = !this.showCart;
       this.Amount = null;
+    },
+    openLogin() {
+      this.$store.dispatch("openLogin");
+    },
+    openMenu() {
+      this.showMenu = !this.showMenu;
     },
   },
 };
@@ -176,9 +165,6 @@ a:hover {
 a:active {
   color: #e84b38;
 }
-<<<<<<< HEAD
-</style>
-=======
 .dropdown {
   position: relative;
   display: inline-block;
@@ -195,4 +181,3 @@ a:active {
   justify-content: center;
 }
 </style>
->>>>>>> 6f74cebf7924eebcc124deb3ed18f23ca90d9340
