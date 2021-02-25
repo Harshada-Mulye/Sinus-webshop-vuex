@@ -1,8 +1,8 @@
 <template>
   <section class="cart-wrapper">
     <section class="cart-container">
-      <div class="item">
-        <h1>Greta Fury</h1>
+      <div v-for="item in cart" :key="item.id" class="item">
+        <h1>{{item.title}}</h1>
         <div>
           <a href="#" @click.prevent="">Remove</a>
         </div>
@@ -21,7 +21,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    computed:{
+    cart(){
+            return this.$store.state.orders;
+        }
+    }
+};
+
 </script>
 
 <style scoped>

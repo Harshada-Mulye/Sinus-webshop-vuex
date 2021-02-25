@@ -3,7 +3,9 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-          <h2 class="hero-heading">Gretas Fury</h2>
+           <article v-for="(product,index) in products" :key="index" class="product">
+          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
+           </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -96,7 +98,7 @@
             <button>L</button>
             <button>XL</button>
           </div>
-          <button>Lägg till i varukorgen</button>
+          <button @click="addToCart(product)">Lägg till i varukorgen</button>
         </article>
       </section>
       <section class="hero-container right">
@@ -124,6 +126,12 @@ export default {
       return this.$store.state.products;
     },
   },
+  methods:{
+    addToCart(product)
+    {
+       this.$store.dispatch("postOrders",product)
+    }
+  }
 };
 </script>
 
