@@ -29,3 +29,12 @@ export async function postOrder(obj) {
     console.log(error);
   }
 }
+
+export async function getOrder() {
+  try {
+    const response = await axios.get(ORDER)
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
