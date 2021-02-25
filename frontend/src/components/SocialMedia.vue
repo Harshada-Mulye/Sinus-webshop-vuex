@@ -24,7 +24,7 @@ export default {};
 
 <style>
 .social-media {
-  margin-left: 150px;
+  margin: 0 100px;
 }
 .socialMedia-img {
   margin-left: 15px;

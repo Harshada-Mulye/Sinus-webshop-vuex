@@ -10,19 +10,22 @@
         />
       </div>
       <div class="right-container">
+        <SocialMedia />
         <div class="cart-container">
-          <div>
+          <div @click="cart" class="dropdown">
             <img
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
               src="../assets/icons/cart-icon.svg"
               alt="Cart icon"
-              @click="cart"
             />
+            <div v-if="showCart" class="dropdown-content">
+              <Minicart />
+            </div>
           </div>
-          <p>{{ orderSum }}kr</p>
+          <p>{{ Amount }}</p>
         </div>
-
-        <SocialMedia />
-
         <div class="menu">
           <img
             class="login"
@@ -53,31 +56,44 @@
 </template>
 
 <script>
+import Minicart from "./Minicart.vue";
 import SocialMedia from "../components/SocialMedia.vue";
 
 export default {
-  components: { SocialMedia },
+  components: { SocialMedia, Minicart },
 
   data() {
     return {
       /* Lägg till riktiga order summan */
-      orderSum: 0,
+      Amount: 0,
       showMenu: false,
+      showCart: false,
     };
   },
   methods: {
     home() {
       if (this.$route.name != "Home") this.$router.push("/");
     },
+<<<<<<< HEAD
     cart() {
       /* Lägg till funktion för att gå till kassan */
       console.log("orders");
     },
     openLogin() {
       this.$store.dispatch("openLogin");
+=======
+
+    login() {
+      /* Lägg till funktion för att logga in */
+      console.log("login");
+>>>>>>> 6f74cebf7924eebcc124deb3ed18f23ca90d9340
     },
     openMenu() {
       this.showMenu = !this.showMenu;
+    },
+    cart() {
+      this.showCart = !this.showCart;
+      this.Amount = null;
     },
   },
 };
@@ -99,6 +115,8 @@ export default {
 .cart-container {
   display: flex;
   align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .cart-container:hover {
   cursor: pointer;
@@ -109,12 +127,13 @@ p {
 .login {
   width: 48px;
   margin-right: 30px;
+  margin-left: 60px;
 }
 .login:hover {
   cursor: pointer;
 }
 .menu {
-  margin-left: 150px;
+  margin-left: 0px;
 }
 .menu-img:hover {
   cursor: pointer;
@@ -157,4 +176,23 @@ a:hover {
 a:active {
   color: #e84b38;
 }
+<<<<<<< HEAD
 </style>
+=======
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 0;
+}
+.dropdown-content {
+  display: flex;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* background-color: orange; */
+  justify-content: center;
+}
+</style>
+>>>>>>> 6f74cebf7924eebcc124deb3ed18f23ca90d9340
