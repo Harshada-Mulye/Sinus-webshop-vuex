@@ -44,16 +44,9 @@ export default {
             })
         }
     },
-<<<<<<< HEAD
-      REMOVE_FROM_CART(state,product){
-        state.cart=state.cart.filter(item=>{
-            return   item.product.title!==product.title
-         
-        })
-        }
-},
-=======
->>>>>>> b75cbdbc3299cb363a2e79ecb624a8a98b02b53d
+      
+      
+
     actions: {
         openLogin(context) {
             context.commit("openLogin")
