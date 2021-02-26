@@ -62,7 +62,7 @@ export async function postOrder(obj) {
 
 export async function getOrder() {
   try {
-    const response = await axios.get(ORDER)
+    const response = await axios.get(ORDERS)
     return response.data;
   } catch (error) {
     console.log(error);
