@@ -51,19 +51,10 @@ export async function getOrders() {
   return response
 }
 
-export async function postOrder(obj) {
+export async function postOrders(obj) {
   try {
     const response = await axios.post(ORDERS, obj)
     return response
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function getOrder() {
-  try {
-    const response = await axios.get(ORDER)
-    return response.data;
   } catch (error) {
     console.log(error);
   }

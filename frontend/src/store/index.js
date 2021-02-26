@@ -7,14 +7,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: [],
-    orders:[],
+/*     products: [],
+    orders:[], */
   },
   mutations: {
     GET_PTODUCTS(state, payload) {
       state.products = payload
     },
-    GET_ORDERS(state,payload)
+/*     GET_ORDERS(state,payload)
     {
       state.orders=payload
     },
@@ -23,7 +23,7 @@ export default new Vuex.Store({
       console.log(response);
 
       context.commit('GET_ORDERS',response)
-    },
+    }, */
   },
   actions: {
     async getProducts(context) {
@@ -32,13 +32,13 @@ export default new Vuex.Store({
      
       context.commit('GET_PTODUCTS',response)
     },
-    async postOrders(context,payload)
+   /*  async postOrders(context,payload)
     {
-      const response = await API.postOrder(payload);
+      const response = await API.postOrders(payload);
       console.log(response);
 
       console.log(context);
-    }
+    } */
   },
   modules: {
     user: user

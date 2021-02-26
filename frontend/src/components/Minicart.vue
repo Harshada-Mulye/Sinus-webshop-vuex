@@ -1,14 +1,15 @@
 <template>
   <section class="cart-wrapper">
     <section class="cart-container">
-      <div v-for="item in cart" :key="item.id" class="item">
-        <h1>{{item.title}}</h1>
+      <div v-for="(i, index) in cart" :key="index" class="item">
+        {{cart}}
+        <h1>{{ i[index].title }}</h1>
         <div>
           <a href="#" @click.prevent="">Remove</a>
         </div>
       </div>
 
-      <span> 1* {{item.price}}</span>
+      <span> 1* {{ i[index].price }}</span>
       <hr />
     </section>
     <div>
@@ -22,13 +23,21 @@
 
 <script>
 export default {
-    computed:{
-    cart(){
-            return this.$store.state.orders;
-        }
+/*   data() {
+    return {
+      cart: null
     }
+  }, */
+/*   created() {
+    this.cart = this.$store.state.user.cart
+    console.log(this.cart[0].price)
+  }, */
+  computed: {
+    cart() {
+      return this.$store.state.user.cart
+    },
+  },
 };
-
 </script>
 
 <style scoped>

@@ -3,7 +3,18 @@ import * as API from '../api/index.js';
 export default {
     state: () => ({
         loggedIn: false,
-        currentUser: null
+        currentUser: null,
+        cart: [
+            {
+                category: "clothes",
+                imgFile: "hoodie-ocean.png",
+                longDesc: "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+                price: 699,
+                shortDesc: "Ocean unisex",
+                title: "Hoodie",
+                _id: "8PEX0YJrpf8DnNKV",
+            }
+        ]
     }),
     mutations: {
         openLogin(state) {
@@ -42,8 +53,8 @@ export default {
             console.log(response.data)
         },
         async postOrder(context, payload) {
-          const response = await API.postOrder(payload);
-          console.log(response);
+            const response = await API.postOrder(payload);
+            console.log(response);
         }
     }
 }
