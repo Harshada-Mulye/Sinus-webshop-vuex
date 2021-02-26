@@ -44,6 +44,9 @@ export default {
             })
         }
     },
+      
+      
+
     actions: {
         openLogin(context) {
             context.commit("openLogin")
@@ -90,6 +93,9 @@ export default {
 
             });
             return total
-        }
+        },
+        cartItemCount(state){
+            return state.cart.length   
+           }
     }
 }
