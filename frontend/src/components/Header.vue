@@ -101,6 +101,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px 5px 10px;
+  height: 76px;
+  box-sizing: border-box;
 }
 .logo:hover {
   cursor: pointer;
