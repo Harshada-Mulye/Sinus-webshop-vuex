@@ -53,7 +53,7 @@ export default {
             console.log(response.data)
         },
         async postOrder(context, payload) {
-            const response = await API.postOrder(payload);
+            const response = await API.postOrders(payload);
             console.log(response);
         }
     }
