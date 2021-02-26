@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 h1 {
-  margin-bottom: 50px;
+  margin: 10px 0 50px 0;
 }
 span {
   color: #e84b38;
