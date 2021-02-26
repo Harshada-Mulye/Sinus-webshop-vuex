@@ -2,7 +2,6 @@
   <div>
     <Header />
     <ProductList />
-
     <FooterComp />
   </div>
 </template>
@@ -17,5 +16,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

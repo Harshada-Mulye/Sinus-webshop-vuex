@@ -10,25 +10,28 @@
         />
       </div>
       <div class="right-container">
+        <SocialMedia />
         <div class="cart-container">
-          <div>
+          <div @click="cart" class="dropdown">
             <img
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
               src="../assets/icons/cart-icon.svg"
               alt="Cart icon"
-              @click="cart"
             />
+            <div v-if="showCart" class="dropdown-content">
+              <Minicart />
+            </div>
           </div>
-          <p>{{ orderSum }}kr</p>
+          <p>{{ cartTotalPrice }}</p>
         </div>
-
-        <SocialMedia />
-
         <div class="menu">
           <img
             class="login"
             src="../assets/icons/login.svg"
             alt="login"
-            @click="login"
+            @click="openLogin"
           />
           <!-- Lägg till hover funktion -->
           <img
@@ -44,39 +47,49 @@
       <nav v-show="showMenu">
         <router-link to="/">Startsida</router-link>
         <router-link to="/products">Produkter</router-link>
-        <!-- Lägg till path -->
-        <router-link to="/">Varukorg</router-link>
-        <!-- Lägg till path -->
-        <router-link to="/">Logga in</router-link>
+        <a href="#" @click="openLogin">Logga In</a>
+        <router-link to="/account" v-if="this.$store.state.user.currentUser"
+          >My account</router-link
+        >
       </nav>
     </transition>
   </div>
 </template>
 
 <script>
+import Minicart from "./Minicart.vue";
 import SocialMedia from "../components/SocialMedia.vue";
 
 export default {
-  components: { SocialMedia },
+  components: { SocialMedia, Minicart },
 
   data() {
     return {
       /* Lägg till riktiga order summan */
-      orderSum: 0,
+      Amount: 0,
       showMenu: false,
+      showCart: false,
     };
+  },
+  computed: {
+    cartItemCount() {
+      return this.$store.getters.cartItemCount;
+    },
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
   },
   methods: {
     home() {
       if (this.$route.name != "Home") this.$router.push("/");
     },
     cart() {
-      /* Lägg till funktion för att gå till kassan */
-      console.log("orders");
+      this.showCart = !this.showCart;
+      this.Amount = null;
     },
-    login() {
-      /* Lägg till funktion för att logga in */
-      console.log("login");
+    openLogin() {
+      if (this.$store.state.user.currentUser) this.$router.push("/account");
+      else this.$store.dispatch("openLogin");
     },
     openMenu() {
       this.showMenu = !this.showMenu;
@@ -91,6 +104,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px 5px 10px;
+  height: 76px;
+  box-sizing: border-box;
 }
 .logo:hover {
   cursor: pointer;
@@ -101,6 +116,8 @@ export default {
 .cart-container {
   display: flex;
   align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .cart-container:hover {
   cursor: pointer;
@@ -111,12 +128,13 @@ p {
 .login {
   width: 48px;
   margin-right: 30px;
+  margin-left: 60px;
 }
 .login:hover {
   cursor: pointer;
 }
 .menu {
-  margin-left: 150px;
+  margin-left: 0px;
 }
 .menu-img:hover {
   cursor: pointer;
@@ -146,6 +164,8 @@ a {
   font-weight: bold;
   font-size: 20px;
   padding: 5px;
+  color: #e84b38;
+  text-transform: capitalize;
 }
 a:visited {
   color: #e84b38;
@@ -156,5 +176,20 @@ a:hover {
 
 a:active {
   color: #e84b38;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 0;
+}
+.dropdown-content {
+  display: flex;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* background-color: orange; */
+  justify-content: center;
 }
 </style>
