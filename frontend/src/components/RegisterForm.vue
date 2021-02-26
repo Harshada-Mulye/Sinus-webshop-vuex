@@ -103,6 +103,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: url("../assets/background.jpg") center center no-repeat;
+  background-size: 100% 100%;
 }
 form {
   width: 25%;
