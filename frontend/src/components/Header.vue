@@ -24,7 +24,7 @@
               <Minicart />
             </div>
           </div>
-          <p>{{ Amount }}kr</p>
+          <p>{{cartTotalPrice}}</p>
         </div>
         <div class="menu">
           <img
@@ -68,6 +68,14 @@ export default {
       showMenu: false,
       showCart: false,
     };
+  },
+  computed:{
+    cartItemCount(){
+    return this.$store.getters.cartItemCount
+  },
+   cartTotalPrice(){
+            return this.$store.getters.cartTotalPrice;
+        }
   },
   methods: {
     home() {

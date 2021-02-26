@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header />
-    <h1><span>Hello</span> {{ name }}!</h1>
+    <h1><span>Hej</span> {{ name }}!</h1>
     <div class="box">
       <UserInfo />
       <OrderHistory />

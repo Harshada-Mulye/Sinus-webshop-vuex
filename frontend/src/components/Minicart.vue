@@ -1,34 +1,67 @@
 <template>
-  <section class="cart-wrapper">
-    <section class="cart-container">
-      <div v-for="item in cart" :key="item.id" class="item">
-        <h1>{{item.title}}</h1>
-        <div>
+ <!--
+    <div v-for="item in cart" :key="item.id" class="item">
+      <h1>{{item.title}}</h1>
+       <div>
           <a href="#" @click.prevent="">Remove</a>
         </div>
-      </div>
-
-      <span> 1* {{item.price}}</span>
+        <span> 1* {{ item.price }}</span>
       <hr />
-    </section>
+      </div>
     <div>
       <hr />
       <p>Sum:799</p>
-      <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
+  <a href="#" @click.prevent="">Clear Cart</a>
       <button>Checkout</button>
+      {{item.price}} 
+
     </div>
+    </section>-->
+    <section class="cart-wrapper">
+    <section class="cart-container">
+
+      <div v-for="item in cart" :key="item.id" class="item">
+        <h1>{{ item.product.title }}</h1>
+        
+     
+     <a href="#"  @click.prevent="removeProductFromCart(item.product)">Remove</a>
+      <!-- <div> -->
+        <span> {{item.quantity}}* {{ item.product.price }}</span>
+          
+        <!-- </div> -->
+      <hr />
+       </div>
+
+    </section>
+    <div>
+      <hr />
+      <p>Sum:{{cartTotalPrice}}</p>
+  <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
+      <button>Checkout</button>
+    </div> 
   </section>
 </template>
 
 <script>
 export default {
-    computed:{
-    cart(){
-            return this.$store.state.orders;
+  computed: {
+    cart() {
+      console.log(this.$store.state.user.cart)
+      return this.$store.state.user.cart
+    },
+    cartTotalPrice(){
+            return this.$store.getters.cartTotalPrice;
         }
-    }
-};
+      
+  },
+  methods:{
+    removeProductFromCart(product){
+     
 
+           this.$store.dispatch("removeProductFromCart",product)
+        },
+  }
+};
 </script>
 
 <style scoped>
@@ -51,10 +84,25 @@ export default {
 }
 
 .item {
-  display: flex;
-  justify-content: space-between;
-  /* border: yellow solid 2px; */
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  /* border: yellow solid 2px;  */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
+}
+
+a {
+  text-align: right;
+}
+
+span {
+  grid-column: 1/3;
+}
+
+hr {
+  grid-column: 1/3;
 }
 
 h1 {
