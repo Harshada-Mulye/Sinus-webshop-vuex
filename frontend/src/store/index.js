@@ -19,6 +19,10 @@ export default new Vuex.Store({
       const response = await API.getProducts()
       context.commit('GET_PTODUCTS',response)
     },
+    async deleteProduct(id) {
+      const response = await API.deleteProduct(id)
+      console.log(response)
+    }
   },
   modules: {
     user: user

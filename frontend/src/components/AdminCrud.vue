@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <h1><span>Admin</span> view</h1>
-      <button class="add">Add Product</button>
+      <button class="add" @click="addProduct">Add Product</button>
     </div>
     <table>
       <tr>
@@ -18,9 +18,11 @@
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
         <td>
-          <button class="show">Show</button>
-          <button class="edit">Edit</button>
-          <button class="delete">Delete</button>
+          <button class="show" @click="showProduct(product._id)">Show</button>
+          <button class="edit" @click="editProduct(product._id)">Edit</button>
+          <button class="delete" @click="deleteProduct(product._id)">
+            Delete
+          </button>
         </td>
       </tr>
     </table>
@@ -29,13 +31,29 @@
 
 <script>
 export default {
+  methods: {
+    addProduct() {
+      console.log("add");
+    },
+    showProduct(id) {
+      console.log(id);
+    },
+    editProduct(id) {
+      console.log(id);
+    },
+    /* Funkar men verkar vara något fel på databasen */
+    deleteProduct(id) {
+      this.$store.dispatch("deleteProduct", id);
+      this.$store.dispatch("getProducts");
+    },
+  },
   computed: {
     products() {
       return this.$store.state.products;
     },
   },
-  async created() {
-    await this.$store.dispatch("getProducts");
+  created() {
+    this.$store.dispatch("getProducts");
   },
 };
 </script>
@@ -57,7 +75,7 @@ h1 {
   margin-left: 5px;
 }
 span {
-      color: #e84b38;
+  color: #e84b38;
 }
 table {
   border-collapse: collapse;
