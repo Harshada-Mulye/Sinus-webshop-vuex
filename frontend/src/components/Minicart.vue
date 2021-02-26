@@ -1,37 +1,32 @@
 <template>
   <section class="cart-wrapper">
-    <section class="cart-container">
-      <div v-for="(i, index) in cart" :key="index" class="item">
-        {{cart}}
-        <h1>{{ i[index].title }}</h1>
+    <div v-for="item in cart" :key="item._id">
+      {{item.title}}
+      {{item.price}}
+
+    </div>
+<!-- <section class="cart-container">
+      <div v-for="item in cart" :key="item._id" class="item">
+        <h1>{{ item.title }}</h1>
         <div>
           <a href="#" @click.prevent="">Remove</a>
         </div>
       </div>
 
-      <span> 1* {{ i[index].price }}</span>
+      <span> 1* {{ item.price }}</span>
       <hr />
     </section>
     <div>
       <hr />
       <p>Sum:799</p>
-      <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
+  <a href="#" @click.prevent="">Clear Cart</a>
       <button>Checkout</button>
-    </div>
+    </div> -->
   </section>
 </template>
 
 <script>
 export default {
-/*   data() {
-    return {
-      cart: null
-    }
-  }, */
-/*   created() {
-    this.cart = this.$store.state.user.cart
-    console.log(this.cart[0].price)
-  }, */
   computed: {
     cart() {
       return this.$store.state.user.cart
