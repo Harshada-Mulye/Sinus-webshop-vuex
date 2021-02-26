@@ -18,9 +18,7 @@ export async function getProducts() {
 
 export async function createUser(obj) {
   try {
-    const response = await axios.post(REGISTER_USER, obj)
-    /* Console log kan tas bort sen */
-    console.log(response)
+    await axios.post(REGISTER_USER, obj)
   } catch (error) {
     console.log(error);
   }
@@ -30,8 +28,6 @@ export async function login(obj) {
   try {
     const response = await axios.post(AUTH, obj)
     setToken(response.data.token);
-    /* Console log kan tas bort sen */
-    console.log(response.data.token)
   } catch (error) {
     console.log(error)
   }
