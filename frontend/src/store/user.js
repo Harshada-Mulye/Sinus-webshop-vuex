@@ -20,7 +20,6 @@ export default {
         },
         updateOrders(state, payload) {
             state.orders = payload
-            console.log(state.currentUser)
         },
         ADD_TO_CART(state, { product, quantity }) {
             let productInCart = state.cart.find(item => {

@@ -24,11 +24,6 @@ const routes = [
     name: 'Account',
     component: () => import('../views/MyAccount.vue'),
   },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: () => import('../views/Admin.vue'),
-  }
 ]
 
 const router = new VueRouter({

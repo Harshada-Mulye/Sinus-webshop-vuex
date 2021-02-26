@@ -1,11 +1,19 @@
 <template>
-  <div class="container">
+  <div>
     <Header />
-    <h1><span>Hej</span> {{ name }}!</h1>
-    <div class="box">
-      <UserInfo />
-      <OrderHistory />
+
+    <div v-if="this.$store.state.user.currentUser.role == 'admin'">
+      Admin
     </div>
+
+    <div v-else-if="this.$store.state.user.currentUser.role == 'customer'">
+      <h1><span>Hej</span> {{ name }}!</h1>
+      <div class="box">
+        <UserInfo />
+        <OrderHistory />
+      </div>
+    </div>
+
     <FooterComp />
   </div>
 </template>
