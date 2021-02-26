@@ -4,17 +4,8 @@ export default {
     state: () => ({
         loggedIn: false,
         currentUser: null,
-        cart: [
-            {
-                category: "clothes",
-                imgFile: "hoodie-ocean.png",
-                longDesc: "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
-                price: 699,
-                shortDesc: "Ocean unisex",
-                title: "Hoodie",
-                _id: "8PEX0YJrpf8DnNKV",
-            }
-        ]
+        cart:[]
+        
     }),
     mutations: {
         openLogin(state) {
@@ -26,8 +17,29 @@ export default {
         updateCurrentUser(state, payload) {
             state.currentUser = payload
             console.log(state.currentUser)
+        },
+        ADD_TO_CART(state,{product,quantity}){
+            let productInCart=state.cart.find(item=>{
+                return item.product.title===product.title
+            })
+            if(productInCart){
+                productInCart.quantity+=quantity
+               
+                
+            }
+            else{
+            state.cart.push({
+                product,
+                quantity
+            })
         }
     },
+      REMOVE_FROM_CART(state,product){
+        state.cart=state.cart.filter(item=>{
+            return item.product.title!==product.title
+        })
+        }
+},
     actions: {
         openLogin(context) {
             context.commit("openLogin")
@@ -55,6 +67,26 @@ export default {
         async postOrder(context, payload) {
             const response = await API.postOrder(payload);
             console.log(response);
+        },
+       addToCart(context,{product,quantity})
+        {
+         context.commit('ADD_TO_CART',{product,quantity})
+        
+    },
+   removeProductFromCart({commit},product){
+    
+        commit('REMOVE_FROM_CART',product)
+    
+    }
+    },
+    getters:{
+         cartTotalPrice(state){
+            let total=0;
+            state.cart.forEach(item => {
+                total+=item.product.price*item.quantity
+                
+            });
+            return total
         }
     }
 }
