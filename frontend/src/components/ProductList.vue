@@ -118,14 +118,7 @@
 
 <script>
 export default {
-  data(){
-    return{
-    id:Math.ceil(Math.random() * 100),
-    date:Date.now(),
-    status:"In Progress"
-    }
-  },
-  created() {
+created() {
     return this.$store.dispatch("getProducts");
   },
   computed: {
@@ -137,16 +130,9 @@ export default {
 
     addToCart(product)
     {
-    
-      const order={
-        id:this.id,
-        date:this.date,
-        status:this.status
-      }
-       
       
-       this.$store.dispatch("postOrders",{order,product})
-   
+       this.$store.dispatch("addToCart",{product,quantity:1})
+  
     }
   }
 };
