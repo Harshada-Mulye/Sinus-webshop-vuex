@@ -4,7 +4,9 @@
 
     <div class="orders" v-for="(order, index) in orders" :key="index">
       <div class="top">
-        <h3>Order {{ index + 1 }}: <span class="status">{{ order.status }}</span> </h3>
+        <h3>
+          Order {{ index + 1 }}: <span class="status">{{ order.status }}</span>
+        </h3>
         <p class="date">
           {{ new Date(order.timeStamp).toLocaleDateString("sv") }}
         </p>
@@ -14,10 +16,7 @@
         <div class="items" v-for="(item, index) in order.items" :key="index">
           <h4>{{ item.title }}</h4>
 
-          <img
-            :src="require('@/assets/items/' + item.imgFile)"
-            alt="item-img"
-          />
+          <img :src="require('@/assets/items/' + item.imgFile)" />
 
           <div class="info-container">
             <p><span>Pris:</span> {{ item.price }}kr</p>
@@ -25,7 +24,9 @@
           </div>
         </div>
       </div>
-      <p class="total-price"><span>Total summa:</span> {{ order.orderValue }}kr</p>
+      <p class="total-price">
+        <span>Total summa:</span> {{ order.orderValue }}kr
+      </p>
     </div>
   </div>
 </template>
@@ -65,7 +66,7 @@ h3 {
 .date {
   font-weight: bold;
   font-size: 13px;
-  color: #e84b38;;
+  color: #e84b38;
 }
 .items-container {
   display: flex;
@@ -94,8 +95,8 @@ img {
 .info-container {
   display: flex;
   justify-content: space-between;
-    font-size: 13px;
-} 
+  font-size: 13px;
+}
 span {
   color: black;
   font-weight: bold;

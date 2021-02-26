@@ -17,8 +17,6 @@ export default new Vuex.Store({
   actions: {
     async getProducts(context) {
       const response = await API.getProducts()
-      console.log(response);
-     
       context.commit('GET_PTODUCTS',response)
     },
   },
