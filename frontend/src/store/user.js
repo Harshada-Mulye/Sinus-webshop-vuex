@@ -4,8 +4,9 @@ export default {
     state: () => ({
         loggedIn: false,
         currentUser: null,
-        cart:[]
-        
+        orders: null,
+        cart: []
+
     }),
     mutations: {
         openLogin(state) {
@@ -17,32 +18,32 @@ export default {
         updateCurrentUser(state, payload) {
             state.currentUser = payload
         },
-        updateOrders(state,payload) {
+        updateOrders(state, payload) {
             state.orders = payload
             console.log(state.currentUser)
         },
-        ADD_TO_CART(state,{product,quantity}){
-            let productInCart=state.cart.find(item=>{
-                return item.product.title===product.title
+        ADD_TO_CART(state, { product, quantity }) {
+            let productInCart = state.cart.find(item => {
+                return item.product.title === product.title
             })
-            if(productInCart){
-                productInCart.quantity+=quantity
-               
-                
+            if (productInCart) {
+                productInCart.quantity += quantity
+
+
             }
-            else{
-            state.cart.push({
-                product,
-                quantity
+            else {
+                state.cart.push({
+                    product,
+                    quantity
+                })
+            }
+        },
+        REMOVE_FROM_CART(state, product) {
+            state.cart = state.cart.filter(item => {
+                return item.product.title !== product.title
             })
         }
     },
-      REMOVE_FROM_CART(state,product){
-        state.cart=state.cart.filter(item=>{
-            return item.product.title!==product.title
-        })
-        }
-},
     actions: {
         openLogin(context) {
             context.commit("openLogin")
@@ -71,23 +72,22 @@ export default {
             const response = await API.postOrders(payload);
             console.log(response);
         },
-       addToCart(context,{product,quantity})
-        {
-         context.commit('ADD_TO_CART',{product,quantity})
-        
+        addToCart(context, { product, quantity }) {
+            context.commit('ADD_TO_CART', { product, quantity })
+
+        },
+        removeProductFromCart({ commit }, product) {
+
+            commit('REMOVE_FROM_CART', product)
+
+        }
     },
-   removeProductFromCart({commit},product){
-    
-        commit('REMOVE_FROM_CART',product)
-    
-    }
-    },
-    getters:{
-         cartTotalPrice(state){
-            let total=0;
+    getters: {
+        cartTotalPrice(state) {
+            let total = 0;
             state.cart.forEach(item => {
-                total+=item.product.price*item.quantity
-                
+                total += item.product.price * item.quantity
+
             });
             return total
         }
