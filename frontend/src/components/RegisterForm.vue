@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     closeRegister() {
-      this.$router.push("/");
+      this.$router.go(-1);
     },
     createUser() {
       const newUser = {
@@ -88,7 +88,7 @@ export default {
         },
       };
       this.$store.dispatch("createUser", newUser);
-      this.$router.push("/");
+      this.$router.go(-1);
     },
   },
 };
