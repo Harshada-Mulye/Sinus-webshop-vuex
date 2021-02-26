@@ -48,7 +48,6 @@ export default {
   width: 100%;
   background: white;
   text-align: left;
-  padding: 20px;
 }
 h2 {
   margin-bottom: 10px;

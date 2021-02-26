@@ -37,13 +37,18 @@ export default {
       this.$store.dispatch("closeLogin");
     },
     login(e) {
+      e.preventDefault();
       const loginInfo = {
         email: this.email,
         password: this.password,
       };
-      e.preventDefault();
       this.$store.dispatch("login", loginInfo);
-      this.$store.dispatch("closeLogin");
+      setTimeout(() => {
+        if (this.$store.state.user.currentUser) {
+          this.$store.dispatch("closeLogin");
+          this.$router.push("/account")
+        }
+      }, 200);
     },
   },
 };

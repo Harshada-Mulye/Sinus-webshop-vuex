@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     closeRegister() {
-      this.$router.push("/");
+      this.$router.go(-1);
     },
     createUser() {
       const newUser = {
@@ -88,7 +88,7 @@ export default {
         },
       };
       this.$store.dispatch("createUser", newUser);
-      this.$router.push("/");
+      this.$router.go(-1);
     },
   },
 };
@@ -103,6 +103,7 @@ export default {
   justify-content: center;
   align-items: center;
   background: url("../assets/background.jpg") center center no-repeat;
+  background-size: 100% 100%;
 }
 form {
   width: 25%;

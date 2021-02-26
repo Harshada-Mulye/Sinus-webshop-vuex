@@ -24,7 +24,7 @@
               <Minicart />
             </div>
           </div>
-          <p>{{cartTotalPrice}}</p>
+          <p>{{ cartTotalPrice }}</p>
         </div>
         <div class="menu">
           <img
@@ -48,7 +48,9 @@
         <router-link to="/">Startsida</router-link>
         <router-link to="/products">Produkter</router-link>
         <a href="#" @click="openLogin">Logga In</a>
-        <router-link to="/account" v-if="this.$store.state.user.currentUser">My account</router-link>
+        <router-link to="/account" v-if="this.$store.state.user.currentUser"
+          >My account</router-link
+        >
       </nav>
     </transition>
   </div>
@@ -69,13 +71,13 @@ export default {
       showCart: false,
     };
   },
-  computed:{
-    cartItemCount(){
-    return this.$store.getters.cartItemCount
-  },
-   cartTotalPrice(){
-            return this.$store.getters.cartTotalPrice;
-        }
+  computed: {
+    cartItemCount() {
+      return this.$store.getters.cartItemCount;
+    },
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
   },
   methods: {
     home() {
@@ -86,7 +88,11 @@ export default {
       this.Amount = null;
     },
     openLogin() {
-      this.$store.dispatch("openLogin");
+      if (this.$store.state.user.currentUser)
+        this.$router.push("/account").catch((error) => {
+          if (error.name != "NavigationDuplicated") throw error;
+        });
+      else this.$store.dispatch("openLogin");
     },
     openMenu() {
       this.showMenu = !this.showMenu;
@@ -101,6 +107,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px 5px 10px;
+  height: 76px;
+  box-sizing: border-box;
 }
 .logo:hover {
   cursor: pointer;
