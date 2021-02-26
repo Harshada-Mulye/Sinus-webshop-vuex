@@ -51,6 +51,9 @@
         <router-link to="/account" v-if="this.$store.state.user.currentUser"
           >My account</router-link
         >
+        <router-link to="/admin" v-if="this.$store.state.user.currentUser && this.$store.state.user.currentUser.role == 'admin'"
+          >My account</router-link
+        >
       </nav>
     </transition>
   </div>
