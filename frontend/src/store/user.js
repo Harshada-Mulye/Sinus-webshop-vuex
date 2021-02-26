@@ -36,7 +36,8 @@ export default {
     },
       REMOVE_FROM_CART(state,product){
         state.cart=state.cart.filter(item=>{
-            return item.product.title!==product.title
+            return   item.product.title!==product.title
+         
         })
         }
 },
@@ -87,6 +88,9 @@ export default {
                 
             });
             return total
-        }
+        },
+        cartItemCount(state){
+            return state.cart.length   
+           }
     }
 }
