@@ -14,7 +14,8 @@ export default {
                 title: "Hoodie",
                 _id: "8PEX0YJrpf8DnNKV",
             }
-        ]
+        ],
+        orders: []
     }),
     mutations: {
         openLogin(state) {
@@ -25,7 +26,9 @@ export default {
         },
         updateCurrentUser(state, payload) {
             state.currentUser = payload
-            console.log(state.currentUser)
+        },
+        updateOrders(state,payload) {
+            state.orders = payload
         }
     },
     actions: {
@@ -45,14 +48,14 @@ export default {
         },
         async getUser() {
             const response = await API.getUser()
-            /* Console log kan tas bort sen */
-            console.log(response.data)
+            return response
         },
-        async getOrders() {
+        async getOrders(context) {
             const response = await API.getOrders()
             console.log(response.data)
+            context.commit("updateOrders", response.data)
         },
-        async postOrder(context, payload) {
+        async postOrders(context, payload) {
             const response = await API.postOrders(payload);
             console.log(response);
         }
