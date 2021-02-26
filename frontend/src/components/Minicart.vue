@@ -1,5 +1,5 @@
 <template>
- <!--
+  <!--
     <div v-for="item in cart" :key="item.id" class="item">
       <h1>{{item.title}}</h1>
        <div>
@@ -17,28 +17,27 @@
 
     </div>
     </section>-->
-    <section class="cart-wrapper">
+  <section class="cart-wrapper">
     <section class="cart-container">
-
       <div v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
-        
-     
-     <a href="#"  @click.prevent="removeProductFromCart(item.product)">Remove</a>
-      <!-- <div> -->
-        <span> {{item.quantity}}* {{ item.product.price }}</span>
-          
-        <!-- </div> -->
-      <hr />
-       </div>
 
+        <a href="#" @click.prevent="removeProductFromCart(item.product)"
+          >Remove</a
+        >
+        <!-- <div> -->
+        <span> {{ item.quantity }}* {{ item.product.price }}</span>
+
+        <!-- </div> -->
+        <hr />
+      </div>
     </section>
     <div>
       <hr />
-      <p>Sum:{{cartTotalPrice}}</p>
-  <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
-      <button>Checkout</button>
-    </div> 
+      <p>Sum:{{ cartTotalPrice }}</p>
+      <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
+      <button v-on:click="checkOut">Checkout</button>
+    </div>
   </section>
 </template>
 
@@ -46,21 +45,21 @@
 export default {
   computed: {
     cart() {
-      console.log(this.$store.state.user.cart)
-      return this.$store.state.user.cart
+      console.log(this.$store.state.user.cart);
+      return this.$store.state.user.cart;
     },
-    cartTotalPrice(){
-            return this.$store.getters.cartTotalPrice;
-        }
-      
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    },
   },
-  methods:{
-    removeProductFromCart(product){
-     
-
-           this.$store.dispatch("removeProductFromCart",product)
-        },
-  }
+  methods: {
+    removeProductFromCart(product) {
+      this.$store.dispatch("removeProductFromCart", product);
+    },
+    checkOut() {
+      this.$router.push({ name: "Checkout" });
+    },
+  },
 };
 </script>
 
