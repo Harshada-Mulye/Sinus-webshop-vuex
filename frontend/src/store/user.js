@@ -70,7 +70,9 @@ export default {
             context.commit("updateOrders", response.data)
         },
         async postOrders(context, payload) {
-            await API.postOrders(payload);
+            const response =await API.postOrders(payload);
+            console.log(response)
+            
         },
         addToCart(context, { product, quantity }) {
             context.commit('ADD_TO_CART', { product, quantity })
