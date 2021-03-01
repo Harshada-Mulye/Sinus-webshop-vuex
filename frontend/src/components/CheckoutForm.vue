@@ -25,32 +25,32 @@
         <span>Betala med kort</span>
         <p>Fyll i uppgifter</p>
       </section>
-      <button @click ="payment()" > betala</button>
+      <button @click="payment()">betala</button>
     </form>
   </section>
 </template>
 
 <script>
 export default {
+  cart() {
+    return this.$store.state.user.cart.id;
+  },
+  methods: {
+    payment() {
+      let cart = {
+        items: [],
+      };
+      let array = [];
 
-   cart() {
-     
-      return this.$store.state.user.cart.id;
+      this.$store.state.user.cart.forEach((element) => {
+        array.push(element.product._id);
+      });
+      cart.items = array;
+      this.$store.dispatch("postOrders", cart);
+
+      console.log(cart);
     },
-  methods:{
-  payment(){
-    let cart = {items :[]}
-    
-    this.$store.state.user.cart.forEach(element => {
-      let array =[]
-      array.push(element.product._id)
-      cart.items =array
-    });
-    this.$store.dispatch("postOrders",cart)
-    
-    console.log(cart);
-  }
-  }
+  },
 };
 </script>
 

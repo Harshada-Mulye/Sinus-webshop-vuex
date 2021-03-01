@@ -10,6 +10,7 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
+      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
       <input type="number" required placeholder="Pris" v-model="price" />
       <input
         type="text"
@@ -29,7 +30,6 @@ export default {
   data() {
     return {
       title: "",
-      category: "",
       price: "",
       shortDesc: "",
       desc: "",
@@ -64,12 +64,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   height: 140%;
   width: 100%;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: fixed;
 }
 form {
   width: 360px;
@@ -112,6 +112,7 @@ textarea {
   margin-bottom: 20px;
   border: 2px solid #c0c0c0;
   border-radius: 3px;
+    padding: 10px 0 0 10px;
 }
 label {
   font-weight: bold;
