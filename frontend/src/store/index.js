@@ -10,18 +10,25 @@ export default new Vuex.Store({
     products: [],
   },
   mutations: {
-    GET_PTODUCTS(state, payload) {
+    getProducts(state, payload) {
       state.products = payload
     },
+    addNewProduct(state, payload) {
+      state.products.push(payload)
+    }
   },
   actions: {
     async getProducts(context) {
       const response = await API.getProducts()
-      context.commit('GET_PTODUCTS',response)
+      context.commit('getProducts', response)
     },
     async deleteProduct(id) {
       const response = await API.deleteProduct(id)
       console.log(response)
+    },
+    async addProduct(context, payload) {
+      await API.addProduct(payload)
+      context.commit("addNewProduct", payload)
     }
   },
   modules: {

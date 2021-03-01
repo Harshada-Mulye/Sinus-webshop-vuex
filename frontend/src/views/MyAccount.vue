@@ -3,7 +3,8 @@
     <Header />
 
     <div v-if="this.$store.state.user.currentUser.role == 'admin'">
-      <AdminCrud />
+      <AddProduct v-if="showAddProduct" @closeAddProduct="closeAddProduct"/>
+      <AdminCrud @addProduct="addProduct"/>
     </div>
 
     <div v-else-if="this.$store.state.user.currentUser.role == 'customer'">
@@ -24,14 +25,26 @@ import UserInfo from "../components/UserInfo.vue";
 import OrderHistory from "../components/OrderHistory.vue";
 import FooterComp from "../components/FooterComp.vue";
 import AdminCrud from "../components/AdminCrud.vue";
+import AddProduct from "../components/AddProduct.vue";
 
 
 export default {
-  components: { Header, UserInfo, OrderHistory, FooterComp, AdminCrud },
+  components: { Header, UserInfo, OrderHistory, FooterComp, AdminCrud, AddProduct },
+  data() {
+    return {
+      showAddProduct: false
+    }
+  },
   methods: {
     getUser() {
       this.$store.dispatch("getUser");
     },
+    addProduct() {
+      this.showAddProduct = true
+    },
+    closeAddProduct() {
+      this.showAddProduct = false
+    }
   },
   computed: {
     name() {
