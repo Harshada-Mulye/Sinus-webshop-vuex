@@ -106,7 +106,7 @@ export default {
   background-size: 100% 100%;
 }
 form {
-  width: 25%;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
