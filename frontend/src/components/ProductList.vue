@@ -145,7 +145,7 @@ export default {
 .wrapper {
   display: flex;
   justify-content: center;
-  border: green solid 2px;
+  /* border: green solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -153,7 +153,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   /* width: 95%; */
-  border: black solid 2px;
+  /* border: black solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -196,7 +196,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  border: red solid 2px;
+  /* border: red solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -247,7 +247,7 @@ div > img {
   justify-content: space-around;
   width: 150px;
   margin: 5px;
-  border: blue solid 2px;
+  /* border: blue solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
