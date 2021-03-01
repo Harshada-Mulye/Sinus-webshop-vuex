@@ -88,7 +88,10 @@ export default {
       this.Amount = null;
     },
     openLogin() {
-      if (this.$store.state.user.currentUser) this.$router.push("/account");
+      if (this.$store.state.user.currentUser)
+        this.$router.push("/account").catch((error) => {
+          if (error.name != "NavigationDuplicated") throw error;
+        });
       else this.$store.dispatch("openLogin");
     },
     openMenu() {

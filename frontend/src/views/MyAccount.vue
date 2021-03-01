@@ -1,11 +1,19 @@
 <template>
-  <div class="container">
+  <div>
     <Header />
-    <h1><span>Hej</span> {{ name }}!</h1>
-    <div class="box">
-      <UserInfo />
-      <OrderHistory />
+
+    <div v-if="this.$store.state.user.currentUser.role == 'admin'">
+      <AdminCrud />
     </div>
+
+    <div v-else-if="this.$store.state.user.currentUser.role == 'customer'">
+      <h1><span>Hej</span> {{ name }}!</h1>
+      <div class="box">
+        <UserInfo />
+        <OrderHistory />
+      </div>
+    </div>
+
     <FooterComp />
   </div>
 </template>
@@ -15,9 +23,11 @@ import Header from "../components/Header.vue";
 import UserInfo from "../components/UserInfo.vue";
 import OrderHistory from "../components/OrderHistory.vue";
 import FooterComp from "../components/FooterComp.vue";
+import AdminCrud from "../components/AdminCrud.vue";
+
 
 export default {
-  components: { Header, UserInfo, OrderHistory, FooterComp },
+  components: { Header, UserInfo, OrderHistory, FooterComp, AdminCrud },
   methods: {
     getUser() {
       this.$store.dispatch("getUser");

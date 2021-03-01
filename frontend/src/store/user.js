@@ -20,7 +20,6 @@ export default {
         },
         updateOrders(state, payload) {
             state.orders = payload
-            console.log(state.currentUser)
         },
         ADD_TO_CART(state, { product, quantity }) {
             let productInCart = state.cart.find(item => {
@@ -68,12 +67,10 @@ export default {
         },
         async getOrders(context) {
             const response = await API.getOrders()
-            console.log(response.data)
             context.commit("updateOrders", response.data)
         },
         async postOrders(context, payload) {
-            const response = await API.postOrders(payload);
-            console.log(response);
+            await API.postOrders(payload);
         },
         addToCart(context, { product, quantity }) {
             context.commit('ADD_TO_CART', { product, quantity })

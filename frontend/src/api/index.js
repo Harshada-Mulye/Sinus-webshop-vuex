@@ -38,18 +38,35 @@ export function setToken(token) {
 }
 
 export async function getUser() {
-  const response = await axios.get(USER)
-  return response
+  try {
+    const response = await axios.get(USER)
+    return response
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export async function getOrders() {
-  const response = await axios.get(ORDERS)
-  return response
+  try {
+    const response = await axios.get(ORDERS)
+    return response
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function postOrders(obj) {
   try {
     const response = await axios.post(ORDERS, obj)
+    return response
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteProduct(id) {
+  try {
+    const response = await axios.delete(`${PRODUCTS}${id}`)
     return response
   } catch (error) {
     console.log(error);
