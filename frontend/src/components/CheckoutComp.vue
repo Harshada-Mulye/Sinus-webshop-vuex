@@ -1,7 +1,7 @@
 <template>
   <section class="checkout-wrapper">
     <section class="checkout-container">
-      <section class="cart-container">
+      <!-- <section class="cart-container">
         <section>
           <section class="cart-top">
             <h2>Handla för över 500kr - få fri frakt</h2>
@@ -26,7 +26,7 @@
           <hr />
           <span>Totalt: 500kr</span>
         </section>
-      </section>
+      </section> -->
     </section>
     <section class="checkout-container right">
       <section class="checkout">
