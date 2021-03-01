@@ -11,7 +11,6 @@
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
       <input type="number" required placeholder="Pris" v-model="price" />
-      <input type="text" required placeholder="Kategori" v-model="category" />
       <input
         type="text"
         required
@@ -44,7 +43,6 @@ export default {
     async addProduct() {
       const newProduct = {
         title: this.title,
-        category: this.category,
         price: this.price,
         shortDesc: this.shortDesc,
         longDesc: this.desc,

@@ -53,6 +53,9 @@ export default {
   async created() {
     await this.$store.dispatch("getProducts");
   },
+  async updated() {
+    await this.$store.dispatch("getProducts");
+  },
 };
 </script>
 
