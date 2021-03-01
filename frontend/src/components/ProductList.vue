@@ -3,9 +3,13 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-           <article v-for="(product,index) in products" :key="index" class="product">
-          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
-           </article>
+          <article
+            v-for="(product, index) in products"
+            :key="index"
+            class="product"
+          >
+            <h2 v-if="index == 2" class="hero-heading">{{ product.title }}</h2>
+          </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -118,7 +122,7 @@
 
 <script>
 export default {
-created() {
+  created() {
     return this.$store.dispatch("getProducts");
   },
   computed: {
@@ -126,15 +130,11 @@ created() {
       return this.$store.state.products;
     },
   },
-  methods:{
-
-    addToCart(product)
-    {
-      
-       this.$store.dispatch("addToCart",{product,quantity:1})
-  
-    }
-  }
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch("addToCart", { product, quantity: 1 });
+    },
+  },
 };
 </script>
 
@@ -142,15 +142,15 @@ created() {
 .wrapper {
   display: flex;
   justify-content: center;
-  /* border: green solid 2px; */
+  border: green solid 2px;
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
 .products-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  width: 95%;
-  /* border: black solid 2px; */
+  /* width: 95%; */
+  border: black solid 2px;
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -193,7 +193,7 @@ created() {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  /* border: red solid 2px; */
+  border: red solid 2px;
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -244,7 +244,7 @@ div > img {
   justify-content: space-around;
   width: 150px;
   margin: 5px;
-  /* border: blue solid 2px; */
+  border: blue solid 2px;
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 

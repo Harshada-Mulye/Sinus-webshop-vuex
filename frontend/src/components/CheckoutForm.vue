@@ -62,7 +62,7 @@ export default {
   /* justify-content: space-between; */
   flex-direction: column;
   display: flex;
-  width: 95%;
+  /* width: 95%; */
   padding: 20px;
 }
 
@@ -71,6 +71,7 @@ form {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  margin-top: 20px;
   /* border: orchid solid 1px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara  */
 }
@@ -118,8 +119,9 @@ h3 {
 }
 p {
   text-align: left;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: #636262;
+  font-weight: normal;
 }
 
 span {
