@@ -47,7 +47,13 @@
       <nav v-show="showMenu">
         <router-link to="/">Startsida</router-link>
         <router-link to="/products">Produkter</router-link>
-        <a href="#" @click="openLogin">Logga In</a>
+        <a
+          href="#"
+          @click="openLogin"
+          v-if="!this.$store.state.user.currentUser"
+          >Logga in</a
+        >
+        <a href="#" v-else @click="logOut">Logga ut</a>
         <router-link to="/account" v-if="this.$store.state.user.currentUser"
           >My account</router-link
         >
@@ -65,8 +71,6 @@ export default {
 
   data() {
     return {
-      /* Lägg till riktiga order summan */
-      Amount: 0,
       showMenu: false,
       showCart: false,
     };
@@ -96,6 +100,12 @@ export default {
     },
     openMenu() {
       this.showMenu = !this.showMenu;
+    },
+    logOut() {
+      if (this.$route.name == "Account") {
+        this.$router.push("/");
+      }
+      location.reload();
     },
   },
 };
@@ -169,7 +179,6 @@ a {
   font-size: 20px;
   padding: 5px;
   color: #e84b38;
-  text-transform: capitalize;
 }
 a:visited {
   color: #e84b38;
@@ -193,7 +202,6 @@ a:active {
   min-width: 250px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  /* background-color: orange; */
   justify-content: center;
 }
 </style>

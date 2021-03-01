@@ -3,8 +3,9 @@
     <Header />
 
     <div v-if="this.$store.state.user.currentUser.role == 'admin'">
+      <EditProduct v-if="showEditProduct" @closeEditProduct="closeEditProduct"/>
       <AddProduct v-if="showAddProduct" @closeAddProduct="closeAddProduct"/>
-      <AdminCrud @addProduct="addProduct"/>
+      <AdminCrud @addProduct="addProduct" @editProduct="editProduct"/>
     </div>
 
     <div v-else-if="this.$store.state.user.currentUser.role == 'customer'">
@@ -26,24 +27,32 @@ import OrderHistory from "../components/OrderHistory.vue";
 import FooterComp from "../components/FooterComp.vue";
 import AdminCrud from "../components/AdminCrud.vue";
 import AddProduct from "../components/AddProduct.vue";
+import EditProduct from "../components/EditProduct.vue";
 
 
 export default {
-  components: { Header, UserInfo, OrderHistory, FooterComp, AdminCrud, AddProduct },
+  components: { Header, UserInfo, OrderHistory, FooterComp, AdminCrud, AddProduct, EditProduct },
   data() {
     return {
-      showAddProduct: false
+      showAddProduct: false,
+      showEditProduct: false,
     }
   },
   methods: {
-    getUser() {
-      this.$store.dispatch("getUser");
+    async getUser() {
+      await this.$store.dispatch("getUser");
     },
     addProduct() {
       this.showAddProduct = true
     },
     closeAddProduct() {
       this.showAddProduct = false
+    },
+    editProduct() {
+      this.showEditProduct = true
+    },
+    closeEditProduct() {
+      this.showEditProduct = false
     }
   },
   computed: {
@@ -65,5 +74,6 @@ span {
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: 72vh;
 }
 </style>

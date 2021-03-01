@@ -10,8 +10,8 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
+      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
       <input type="number" required placeholder="Pris" v-model="price" />
-      <input type="text" required placeholder="Kategori" v-model="category" />
       <input
         type="text"
         required
@@ -30,7 +30,6 @@ export default {
   data() {
     return {
       title: "",
-      category: "",
       price: "",
       shortDesc: "",
       desc: "",
@@ -41,16 +40,19 @@ export default {
     closeAddProduct() {
       this.$emit("closeAddProduct");
     },
-    addProduct() {
+    async addProduct() {
       const newProduct = {
         title: this.title,
-        category: this.category,
         price: this.price,
         shortDesc: this.shortDesc,
         longDesc: this.desc,
         imgFile: this.img,
       };
-      this.$store.dispatch("addProduct", newProduct);
+      await this.$store.dispatch("addProduct", newProduct);
+      this.$router.push("/account").catch((error) => {
+        if (error.name != "NavigationDuplicated") throw error;
+        this.$emit("closeAddProduct");
+      });
     },
   },
 };
@@ -62,12 +64,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   height: 140%;
   width: 100%;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: fixed;
 }
 form {
   width: 360px;
@@ -106,10 +108,11 @@ input {
 }
 textarea {
   height: 100px;
-  width: 89%;
+  width: 85%;
   margin-bottom: 20px;
   border: 2px solid #c0c0c0;
   border-radius: 3px;
+    padding: 10px 0 0 10px;
 }
 label {
   font-weight: bold;

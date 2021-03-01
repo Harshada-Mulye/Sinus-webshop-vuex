@@ -15,6 +15,9 @@ export default new Vuex.Store({
     },
     addNewProduct(state, payload) {
       state.products.push(payload)
+    },
+    deleteProduct(state, payload) {
+      state.products = state.products.filter(product => product._id !== payload);
     }
   },
   actions: {
@@ -22,9 +25,9 @@ export default new Vuex.Store({
       const response = await API.getProducts()
       context.commit('getProducts', response)
     },
-    async deleteProduct(id) {
-      const response = await API.deleteProduct(id)
-      console.log(response)
+    async deleteProduct(context, payload) {
+      await API.deleteProduct(payload)
+      context.commit("deleteProduct", payload)
     },
     async addProduct(context, payload) {
       await API.addProduct(payload)

@@ -20,7 +20,10 @@
         <td>
           <button class="show" @click="showProduct(product._id)">Show</button>
           <button class="edit" @click="editProduct(product._id)">Edit</button>
-          <button class="delete" @click="deleteProduct(product._id)">
+          <button
+            class="delete"
+            @click="deleteProduct(product._id, product.title)"
+          >
             Delete
           </button>
         </td>
@@ -31,29 +34,32 @@
 
 <script>
 export default {
-  methods: {
-    addProduct() {
-      this.$emit("addProduct")
-    },
-    showProduct(id) {
-      console.log(id);
-    },
-    editProduct(id) {
-      console.log(id);
-    },
-    /* Funkar men verkar vara något fel på databasen */
-    deleteProduct(id) {
-      this.$store.dispatch("deleteProduct", id);
-      this.$store.dispatch("getProducts");
-    },
-  },
   computed: {
     products() {
       return this.$store.state.products;
     },
   },
-  created() {
-    this.$store.dispatch("getProducts");
+  methods: {
+    addProduct() {
+      this.$emit("addProduct");
+    },
+    showProduct(id) {
+      console.log(id);
+    },
+    editProduct() {
+      this.$emit("editProduct");
+    },
+    async deleteProduct(id, name) {
+      if (confirm("Är du säker på att du vill produkten " + name))
+        await this.$store.dispatch("deleteProduct", id);
+      else return;
+    },
+  },
+  async created() {
+    await this.$store.dispatch("getProducts");
+  },
+  async updated() {
+    await this.$store.dispatch("getProducts");
   },
 };
 </script>

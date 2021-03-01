@@ -33,8 +33,8 @@
 
 <script>
 export default {
-  created() {
-    this.$store.dispatch("getOrders");
+  async created() {
+    await this.$store.dispatch("getOrders");
   },
   computed: {
     orders() {
@@ -74,6 +74,7 @@ h3 {
   border-bottom: 2px solid #c0c0c0;
   padding-bottom: 10px;
   margin-bottom: 5px;
+  min-width: 250px;
 }
 .items {
   display: flex;

@@ -1,20 +1,26 @@
 <template>
   <div class="container">
-    <form>
+    <form @submit.prevent="editProduct">
       <div class="header">
-        <h1>Mina sidor</h1>
-        <img src="@/assets/icons/close.svg" alt="close" @click="closeLogin" />
+        <h1>Edit Product</h1>
+        <img
+          src="@/assets/icons/close-black.svg"
+          alt="close"
+          @click="closeEditProduct"
+        />
       </div>
-      <input type="email" placeholder="Email" required v-model="email" />
+      <input type="text" required placeholder="Namn" v-model="title" />
+      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
+      <input type="number" required placeholder="Pris" v-model="price" />
       <input
-        type="password"
-        placeholder="Lösenord"
+        type="text"
         required
-        v-model="password"
+        placeholder="Kort beskrivning"
+        v-model="shortDesc"
       />
-      <button @click="login">Logga In</button>
-      <button class="register" @click="register">Registrera</button>
-      <p>Glömt Lösenordet?</p>
+      <input type="text" required placeholder="Bild url" v-model="img" />
+      <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
+      <button>Edit product</button>
     </form>
   </div>
 </template>
@@ -23,28 +29,19 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      title: "",
+      price: "",
+      shortDesc: "",
+      desc: "",
+      img: null,
     };
   },
   methods: {
-    closeLogin() {
-      this.$store.dispatch("closeLogin");
+    closeEditProduct() {
+      this.$emit("closeEditProduct");
     },
-    register(e) {
-      e.preventDefault();
-      this.$router.push({ name: "Register" });
-      this.$store.dispatch("closeLogin");
-    },
-    async login(e) {
-      e.preventDefault();
-      const loginInfo = {
-        email: this.email,
-        password: this.password,
-      };
-      await this.$store.dispatch("login", loginInfo);
-      this.$store.dispatch("closeLogin");
-      this.$router.push("/account");
+    editProduct() {
+      console.log("edit");
     },
   },
 };
@@ -56,8 +53,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  height: 130%;
+  height: 140%;
   width: 100%;
   top: 40%;
   left: 50%;
@@ -65,7 +61,7 @@ export default {
   position: fixed;
 }
 form {
-  width: 320px;
+  width: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,8 +93,19 @@ input {
   margin-bottom: 20px;
   padding: 15px;
   border: 2px solid #c0c0c0;
-  outline-color: #e84b38;
   border-radius: 3px;
+}
+textarea {
+  height: 100px;
+  width: 85%;
+  margin-bottom: 20px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+  padding: 10px 0 0 10px;
+}
+label {
+  font-weight: bold;
+  color: black;
 }
 button {
   width: 90%;
@@ -107,7 +114,8 @@ button {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background: #e84b38;
+  background: #ffd700;
+  color: rgb(73, 73, 73);
   border: none;
   outline: none;
   border-radius: 3px;
@@ -116,17 +124,5 @@ button {
 button:hover {
   cursor: pointer;
 }
-.register {
-  background: white;
-  border: 2px solid #e84b38;
-  color: #e84b38;
-}
-p {
-  font-size: 13px;
-  font-weight: bold;
-  color: black;
-}
-p:hover {
-  cursor: pointer;
-}
 </style>
+ 
