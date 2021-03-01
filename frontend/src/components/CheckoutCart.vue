@@ -7,17 +7,24 @@
       </section>
       <h3>Varukorg (1)</h3>
       <article class="cart-products">
+        
         <h4>Vara</h4>
         <h4>Storlek</h4>
         <h4>Antal</h4>
         <h4>Summa</h4>
       </article>
       <hr />
-      <section class="cart-products">
-        <span>BILD</span>
-        <span>Onesize</span>
-        <span>1</span>
-        <span>600kr</span>
+      <section class="cart-productdetails">
+         <div v-for="item in cart" :key="item.id" class="itemdetails">
+           
+    
+<img :src="require('@/assets/items/' + item.product.imgFile)" />
+
+      
+        <h4>Onesize</h4>
+        <h4>{{item.quantity}} </h4>
+        <h4> {{ item.quantity *item.product.price  }} </h4>
+         </div>
       </section>
     </section>
     <section class="cart-bottom">
@@ -28,7 +35,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+   computed: {
+    cart() {
+      console.log(this.$store.state.user.cart);
+      return this.$store.state.user.cart;
+    } }
+};
 </script>
 
 <style scoped>
@@ -109,5 +122,21 @@ span {
   padding: 0;
   font-size: 0.9rem;
   font-weight: bold;
+}
+.cart-productdetails{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.itemdetails{
+  display:grid;
+ grid-template-rows: auto;
+  grid-template-columns:1fr 1fr 1fr 1fr ;
+}
+img {
+  width: 120px;
+  height: 100px;
+  padding-bottom: 30px;
 }
 </style>
