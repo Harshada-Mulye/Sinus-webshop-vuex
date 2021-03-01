@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <form @submit.prevent="addProduct">
+    <form @submit.prevent="editProduct">
       <div class="header">
-        <h1>Add Product</h1>
+        <h1>Edit Product</h1>
         <img
           src="@/assets/icons/close-black.svg"
           alt="close"
-          @click="closeAddProduct"
+          @click="closeEditProduct"
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
@@ -20,7 +20,7 @@
       />
       <input type="text" required placeholder="Bild url" v-model="img" />
       <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
-      <button>Add Product</button>
+      <button>Edit product</button>
     </form>
   </div>
 </template>
@@ -37,22 +37,11 @@ export default {
     };
   },
   methods: {
-    closeAddProduct() {
-      this.$emit("closeAddProduct");
+    closeEditProduct() {
+      this.$emit("closeEditProduct");
     },
-    async addProduct() {
-      const newProduct = {
-        title: this.title,
-        price: this.price,
-        shortDesc: this.shortDesc,
-        longDesc: this.desc,
-        imgFile: this.img,
-      };
-      await this.$store.dispatch("addProduct", newProduct);
-      this.$router.push("/account").catch((error) => {
-        if (error.name != "NavigationDuplicated") throw error;
-        this.$emit("closeAddProduct");
-      });
+    editProduct() {
+      console.log("edit");
     },
   },
 };
@@ -112,7 +101,7 @@ textarea {
   margin-bottom: 20px;
   border: 2px solid #c0c0c0;
   border-radius: 3px;
-    padding: 10px 0 0 10px;
+  padding: 10px 0 0 10px;
 }
 label {
   font-weight: bold;
@@ -125,7 +114,8 @@ button {
   font-size: 16px;
   font-weight: bold;
   color: white;
-  background: rgb(13, 189, 13);
+  background: #ffd700;
+  color: rgb(73, 73, 73);
   border: none;
   outline: none;
   border-radius: 3px;
@@ -135,3 +125,4 @@ button:hover {
   cursor: pointer;
 }
 </style>
+ 

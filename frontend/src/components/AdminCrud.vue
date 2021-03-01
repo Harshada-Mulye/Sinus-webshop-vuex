@@ -43,8 +43,8 @@ export default {
     showProduct(id) {
       console.log(id);
     },
-    editProduct(id) {
-      console.log(id);
+    editProduct() {
+      this.$emit("editProduct")
     },
     async deleteProduct(id) {
       await this.$store.dispatch("deleteProduct", id);
