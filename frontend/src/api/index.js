@@ -72,3 +72,12 @@ export async function deleteProduct(id) {
     console.log(error);
   }
 }
+
+export async function addProduct(obj) {
+  try {
+    const response = await axios.post(`${PRODUCTS}`, obj)
+    return response 
+  } catch (error) {
+    console.log(error)
+  }
+}

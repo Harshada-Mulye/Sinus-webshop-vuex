@@ -61,14 +61,14 @@ export default {
   justify-content: center;
   align-items: center;
   position: absolute;
-  height: 100%;
+  height: 130%;
   width: 100%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 form {
-  width: 22%;
+  width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -33,7 +33,7 @@
 export default {
   methods: {
     addProduct() {
-      console.log("add");
+      this.$emit("addProduct")
     },
     showProduct(id) {
       console.log(id);
