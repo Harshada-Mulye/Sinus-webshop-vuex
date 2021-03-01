@@ -36,8 +36,8 @@ export default {
     }
   },
   methods: {
-    getUser() {
-      this.$store.dispatch("getUser");
+    async getUser() {
+      await this.$store.dispatch("getUser");
     },
     addProduct() {
       this.showAddProduct = true
@@ -65,5 +65,6 @@ span {
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: 72vh;
 }
 </style>

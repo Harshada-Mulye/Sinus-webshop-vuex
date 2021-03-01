@@ -36,19 +36,15 @@ export default {
       this.$router.push({ name: "Register" });
       this.$store.dispatch("closeLogin");
     },
-    login(e) {
+    async login(e) {
       e.preventDefault();
       const loginInfo = {
         email: this.email,
         password: this.password,
       };
-      this.$store.dispatch("login", loginInfo);
-      setTimeout(() => {
-        if (this.$store.state.user.currentUser) {
-          this.$store.dispatch("closeLogin");
-          this.$router.push("/account")
-        }
-      }, 200);
+      await this.$store.dispatch("login", loginInfo);
+      this.$store.dispatch("closeLogin");
+      this.$router.push("/account");
     },
   },
 };
@@ -66,6 +62,7 @@ export default {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: fixed;
 }
 form {
   width: 320px;

@@ -33,8 +33,8 @@
 
 <script>
 export default {
-  created() {
-    this.$store.dispatch("getOrders");
+  async created() {
+    await this.$store.dispatch("getOrders");
   },
   computed: {
     orders() {
