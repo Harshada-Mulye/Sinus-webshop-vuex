@@ -29,7 +29,7 @@
     </section>
     <section class="cart-bottom">
       <hr />
-      <span>Totalt: 500kr</span>
+      <span>Totalt: {{cartTotalPrice}}kr</span>
     </section>
   </section>
 </template>
@@ -40,7 +40,12 @@ export default {
     cart() {
       console.log(this.$store.state.user.cart);
       return this.$store.state.user.cart;
-    } }
+    },
+    
+    cartTotalPrice() {
+      return this.$store.getters.cartTotalPrice;
+    }
+     }
 };
 </script>
 
