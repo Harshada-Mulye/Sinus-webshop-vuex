@@ -25,6 +25,7 @@ button {
   color: white;
   font-family: "Electrolize", sans-serif;
   transition: all 0.3s;
+  outline: none;
 }
 button:hover {
     cursor: pointer;

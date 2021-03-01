@@ -20,7 +20,10 @@
         <td>
           <button class="show" @click="showProduct(product._id)">Show</button>
           <button class="edit" @click="editProduct(product._id)">Edit</button>
-          <button class="delete" @click="deleteProduct(product._id)">
+          <button
+            class="delete"
+            @click="deleteProduct(product._id, product.title)"
+          >
             Delete
           </button>
         </td>
@@ -44,10 +47,12 @@ export default {
       console.log(id);
     },
     editProduct() {
-      this.$emit("editProduct")
+      this.$emit("editProduct");
     },
-    async deleteProduct(id) {
-      await this.$store.dispatch("deleteProduct", id);
+    async deleteProduct(id, name) {
+      if (confirm("Är du säker på att du vill produkten " + name))
+        await this.$store.dispatch("deleteProduct", id);
+      else return;
     },
   },
   async created() {
