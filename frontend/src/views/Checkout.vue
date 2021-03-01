@@ -54,5 +54,6 @@ export default {
 .right {
   width: 30%;
   padding-left: 0;
+  align-self: flex-start;
 }
 </style>

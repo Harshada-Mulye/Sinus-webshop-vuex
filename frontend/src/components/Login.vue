@@ -42,9 +42,19 @@ export default {
         email: this.email,
         password: this.password,
       };
+<<<<<<< HEAD
       await this.$store.dispatch("login", loginInfo);
       this.$store.dispatch("closeLogin");
       this.$router.push("/account");
+=======
+      this.$store.dispatch("login", loginInfo);
+      setTimeout(() => {
+        if (this.$store.state.user.currentUser) {
+          this.$store.dispatch("closeLogin");
+          this.$router.push("/account");
+        }
+      }, 200);
+>>>>>>> 1dbe7c0a4f14377a35807de9e88c7beb555082df
     },
   },
 };
@@ -62,6 +72,7 @@ export default {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: fixed;
 }
 form {
   width: 320px;
