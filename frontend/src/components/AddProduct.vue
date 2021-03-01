@@ -41,7 +41,7 @@ export default {
     closeAddProduct() {
       this.$emit("closeAddProduct");
     },
-    addProduct() {
+    async addProduct() {
       const newProduct = {
         title: this.title,
         category: this.category,
@@ -50,7 +50,11 @@ export default {
         longDesc: this.desc,
         imgFile: this.img,
       };
-      this.$store.dispatch("addProduct", newProduct);
+      await this.$store.dispatch("addProduct", newProduct);
+      this.$router.push("/account").catch((error) => {
+        if (error.name != "NavigationDuplicated") throw error;
+        this.$emit("closeAddProduct");
+      });
     },
   },
 };

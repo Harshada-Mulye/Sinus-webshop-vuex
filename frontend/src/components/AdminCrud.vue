@@ -31,9 +31,14 @@
 
 <script>
 export default {
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
+  },
   methods: {
     addProduct() {
-      this.$emit("addProduct")
+      this.$emit("addProduct");
     },
     showProduct(id) {
       console.log(id);
@@ -41,19 +46,12 @@ export default {
     editProduct(id) {
       console.log(id);
     },
-    /* Funkar men verkar vara något fel på databasen */
-    deleteProduct(id) {
-      this.$store.dispatch("deleteProduct", id);
-      this.$store.dispatch("getProducts");
+    async deleteProduct(id) {
+      await this.$store.dispatch("deleteProduct", id);
     },
   },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-  },
-  created() {
-    this.$store.dispatch("getProducts");
+  async created() {
+    await this.$store.dispatch("getProducts");
   },
 };
 </script>
