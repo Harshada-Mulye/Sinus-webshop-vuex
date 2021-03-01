@@ -121,7 +121,10 @@
 </template>
 
 <script>
+import Productinfo from "../components/Productinfo.vue";
+
 export default {
+  component: { Productinfo },
   created() {
     return this.$store.dispatch("getProducts");
   },
