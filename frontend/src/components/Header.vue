@@ -45,18 +45,29 @@
     </div>
     <transition name="slideMenu">
       <nav v-show="showMenu">
-        <router-link to="/">Startsida</router-link>
-        <router-link to="/products">Produkter</router-link>
-        <a
-          href="#"
-          @click="openLogin"
-          v-if="!this.$store.state.user.currentUser"
-          >Logga in</a
-        >
-        <a href="#" v-else @click="logOut">Logga ut</a>
-        <router-link to="/account" v-if="this.$store.state.user.currentUser"
-          >Min sida</router-link
-        >
+        <div class="links">
+          <router-link to="/">Startsida</router-link>
+          <router-link to="/products">Produkter</router-link>
+          <router-link to="/account" v-if="this.$store.state.user.currentUser"
+            >Min sida</router-link
+          >
+          <a
+            href="#"
+            @click="openLogin"
+            v-if="!this.$store.state.user.currentUser"
+            >Logga in</a
+          >
+          <a href="#" v-else @click="logOut">Logga ut</a>
+          <router-link
+            to="/admin"
+            v-if="
+              this.$store.state.user.currentUser &&
+              this.$store.state.user.currentUser.role == 'admin'
+            "
+          >
+            Admin View
+          </router-link>
+        </div>
       </nav>
     </transition>
   </div>
@@ -160,6 +171,12 @@ nav {
   align-items: center;
   padding: 30px;
   color: #e84b38;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .slideMenu-enter,
 .slideMenu-leave-to {
