@@ -3,9 +3,13 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-           <article v-for="(product,index) in products" :key="index" class="product">
-          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
-           </article>
+          <article
+            v-for="(product, index) in products"
+            :key="index"
+            class="product"
+          >
+            <h2 v-if="index == 2" class="hero-heading">{{ product.title }}</h2>
+          </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -13,7 +17,7 @@
       <section class="products-container">
         <article v-for="product in products" :key="product.id" class="product">
           <h2>{{ product.title }}</h2>
-          <section class="product-item" @click="productPopUp">
+          <section class="product-item" @click="showModal(product)">
             <p>{{ product.price }}:-</p>
             <img
               v-if="
@@ -30,7 +34,7 @@
               src="../assets/items/hoodie-ash.png"
               alt="hoodie"
             />
-            <img 
+            <img
               v-if="
                 product.title === 'Hoodie' &&
                 product.shortDesc === 'Ocean unisex'
@@ -58,7 +62,8 @@
               src="../assets/items/skateboard-generic.png"
               alt="hoodie"
             />
-            <img @click="showProductInfo = true"
+            <img
+              @click="showProductInfo = true"
               v-if="product.title === 'Tricky'"
               src="../assets/items/skateboard-generic.png"
               alt="hoodie"
@@ -78,7 +83,7 @@
               src="../assets/items/wheel-spinner.png"
               alt="hoodie"
             />
-            <img 
+            <img
               v-if="product.title === 'Wave'"
               src="../assets/items/wheel-wave.png"
               alt="hoodie"
@@ -113,44 +118,27 @@
         </article>
       </section>
     </section>
-    
-    <div v-if="displayProduct" class="pop-up"> 
-       
-       <product-info />
-    </div>
   </section>
 </template>
 
 <script>
-import ProductInfo from './ProductInfo.vue';
-
 export default {
-  
-created() {
+  created() {
     return this.$store.dispatch("getProducts");
   },
-  data: function () {
-    return {
-      displayProduct: false,
-    };
-  },
   computed: {
-    products() { 
+    products() {
       return this.$store.state.products;
     },
   },
-  methods:{
-    addToCart(product)
-    {    
-       this.$store.dispatch("addToCart",{product,quantity:1})
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch("addToCart", { product, quantity: 1 });
     },
-    productPopUp(){
-      this.displayProduct = true;
-    },
+    showModal(product) {
+      this.$emit("showModal", product)
+    }
   },
-  component: {
-    ProductInfo
-  }
 };
 </script>
 <style scoped>
@@ -230,6 +218,9 @@ h2 {
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.product-item:hover {
+  cursor: pointer;
+}
 
 p {
   margin: 0;
@@ -287,8 +278,8 @@ button:hover {
   background-color: #e84b38;
   color: white;
 }
-.pop-up{
-  display:flex;
+.pop-up {
+  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;

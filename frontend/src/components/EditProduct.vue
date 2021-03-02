@@ -69,10 +69,7 @@ export default {
         },
       };
       await this.$store.dispatch("editProduct", obj);
-      this.$router.push("/admin").catch((error) => {
-        if (error.name != "NavigationDuplicated") throw error;
-        this.$emit("closeEditProduct");
-      });
+      this.$emit("closeEditProduct");
     },
   },
 };

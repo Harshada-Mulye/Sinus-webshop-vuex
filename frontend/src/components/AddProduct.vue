@@ -65,10 +65,7 @@ export default {
         imgFile: this.imgFile,
       };
       await this.$store.dispatch("addProduct", newProduct);
-      this.$router.push("/admin").catch((error) => {
-        if (error.name != "NavigationDuplicated") throw error;
-        this.$emit("closeAddProduct");
-      });
+      this.$emit("closeAddProduct");
     },
   },
 };

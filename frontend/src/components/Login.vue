@@ -3,7 +3,7 @@
     <form>
       <div class="header">
         <h1>Mina sidor</h1>
-        <img src="@/assets/icons/close.svg" alt="close" @click="closeLogin" />
+        <img src="@/assets/icons/close.svg" class="close" @click="closeLogin" />
       </div>
       <input type="email" placeholder="Email" required v-model="email" />
       <input
@@ -84,9 +84,9 @@ h1 {
   color: black;
   width: 100%;
 }
-img {
-  width: 25px;
-  margin-top: -35px;
+.close {
+  width: 30px;
+  margin-top: -30px;
   margin-right: -15px;
 }
 img:hover {
