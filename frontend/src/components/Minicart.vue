@@ -19,22 +19,29 @@
     </section>-->
   <section class="cart-wrapper">
     <section class="cart-container">
-      <div v-for="item in cart" :key="item.id" class="item">
+      <section v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
 
-        <a href="#" @click.prevent="removeProductFromCart(item.product)"
-          >Remove</a
-        >
+        <section class="quantity">
+          <span @click = "decrement(item)" >-</span><span>1</span><span @click = "increment(item)">+</span>
+        </section>
+        <section class="remove">
+          <img
+            src="@/assets/icons/close.svg"
+            alt="close"
+            @click.prevent="removeProductFromCart(item.product)"
+          />
+        </section>
         <!-- <div> -->
         <span> {{ item.quantity }}* {{ item.product.price }}</span>
 
         <!-- </div> -->
         <hr />
-      </div>
+      </section>
     </section>
     <div>
-      <hr />
-      <p>Sum:{{ cartTotalPrice }}</p>
+      <!-- <hr /> -->
+      <p>Summa:{{ cartTotalPrice }}</p>
       <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
       <button v-on:click="checkOut">Checkout</button>
     </div>
@@ -45,7 +52,7 @@
 export default {
   computed: {
     cart() {
-      console.log(this.$store.state.user.cart);
+     
       return this.$store.state.user.cart;
     },
     cartTotalPrice() {
@@ -59,6 +66,19 @@ export default {
     checkOut() {
       this.$router.push({ name: "Checkout" });
     },
+    decrement(item){
+      console.log("decrement")
+     this.$store.dispatch("decrementQuantity",item)
+     console.log(this.$store.state.user.cart)
+    
+    },
+    increment(item){
+      console.log("increment")
+     this.$store.dispatch("incrementQuantity",item)
+     console.log(this.$store.state.user.cart)
+    
+    }
+
   },
 };
 </script>
@@ -86,27 +106,57 @@ export default {
   /* display: flex;
   justify-content: space-between; */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
-  /* border: yellow solid 2px;  */
+  /* border: yellow solid 2px; */
+  align-items: center;
+  /* background-color: red;
+  grid-gap: 10px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
-a {
+/* a {
   text-align: right;
+} */
+
+img {
+  width: 10px;
+  grid-column: 4;
+  /* background-color: lime; */
+  display: flex;
+  justify-content: flex-start;
 }
 
-span {
-  grid-column: 1/3;
+.remove {
+  display: flex;
+  justify-content: flex-end;
+}
+.quantity {
+  grid-column: 3;
+  /* background-color: lime; */
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* div > img {
+  background-color: lime;
+  display: flex;
+  align-self: flex-end;
+} */
+div > span {
+  grid-column: 1 / span 4;
+  /* background-color: lime; */
 }
 
 hr {
-  grid-column: 1/3;
+  grid-column: 1 / span 4;
 }
 
 h1 {
   font-family: sans-serif;
   font-size: 0.9rem;
+  grid-column: 1 / span 2;
+  /* background-color: lime; */
 }
 /* span {
   text-align: left;
@@ -132,4 +182,8 @@ button:hover {
   background-color: #e84b38;
   color: white;
 }
+
+/* div > hr {
+  margin-top: 40px;
+} */
 </style>

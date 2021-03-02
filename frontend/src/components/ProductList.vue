@@ -3,9 +3,13 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-           <article v-for="(product,index) in products" :key="index" class="product">
-          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
-           </article>
+          <article
+            v-for="(product, index) in products"
+            :key="index"
+            class="product"
+          >
+            <h2 v-if="index == 2" class="hero-heading">{{ product.title }}</h2>
+          </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -117,8 +121,11 @@
 </template>
 
 <script>
+import Productinfo from "../components/Productinfo.vue";
+
 export default {
-created() {
+  component: { Productinfo },
+  created() {
     return this.$store.dispatch("getProducts");
   },
   computed: {
@@ -126,15 +133,11 @@ created() {
       return this.$store.state.products;
     },
   },
-  methods:{
-
-    addToCart(product)
-    {
-      
-       this.$store.dispatch("addToCart",{product,quantity:1})
-  
-    }
-  }
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch("addToCart", { product, quantity: 1 });
+    },
+  },
 };
 </script>
 
@@ -149,7 +152,7 @@ created() {
 .products-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  width: 95%;
+  /* width: 95%; */
   /* border: black solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }

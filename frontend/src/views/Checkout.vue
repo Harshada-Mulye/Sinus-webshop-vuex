@@ -1,5 +1,5 @@
 <template>
-  <section class="hej">
+  <section>
     <Header />
     <section class="checkout-wrapper">
       <section class="checkout-container">
@@ -29,10 +29,6 @@ export default {
 </script>
 
 <style scoped>
-.hej {
-  height: 100%;
-  /* border: orange solid 1px; */
-}
 .checkout-wrapper {
   display: flex;
   justify-content: center;
@@ -44,15 +40,15 @@ export default {
 
 .checkout-container {
   display: flex;
-  width: 55%;
-  padding: 20px;
+  /* width: 55%; */
+  padding: 30px 60px;
   min-height: 450px;
   /* border: green solid 1px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
 .right {
-  width: 30%;
+  /* width: 30%; */
   padding-left: 0;
   align-self: flex-start;
 }

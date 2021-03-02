@@ -131,6 +131,7 @@ export default {
   align-items: center;
   margin-left: 20px;
   margin-right: 20px;
+  width: 100px;
 }
 .cart-container:hover {
   cursor: pointer;
@@ -141,7 +142,7 @@ p {
 .login {
   width: 48px;
   margin-right: 30px;
-  margin-left: 60px;
+  /* margin-left: 60px; */
 }
 .login:hover {
   cursor: pointer;
