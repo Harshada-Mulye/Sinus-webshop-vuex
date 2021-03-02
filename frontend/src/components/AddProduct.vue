@@ -18,7 +18,8 @@
         placeholder="Kort beskrivning"
         v-model="shortDesc"
       />
-      <select v-model="imgFile">
+      <select v-model="imgFile" required>
+        <option value="" disabled selected>Välj bild</option>
         <option value="hoodie-fire.png">Hoodie fire</option>
         <option value="hoodie-ash.png">Hoodie ash</option>
         <option value="hoodie-ocean.png">Hoodie ocean</option>
@@ -116,6 +117,13 @@ img:hover {
 }
 input {
   width: 80%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+}
+select {
+  width: 90%;
   margin-bottom: 20px;
   padding: 15px;
   border: 2px solid #c0c0c0;

@@ -126,6 +126,13 @@ input {
   border: 2px solid #c0c0c0;
   border-radius: 3px;
 }
+select {
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+}
 textarea {
   height: 100px;
   width: 85%;
