@@ -3,7 +3,6 @@
     <Header />
     <ProductList />
     <FooterComp />
-    <Productinfo />
   </div>
 </template>
 
@@ -13,7 +12,7 @@ import FooterComp from "../components/FooterComp.vue";
 import ProductList from "../components/ProductList.vue";
 
 export default {
-  components: { Header, FooterComp, ProductList },
+  components: { Header, FooterComp, ProductList},
 };
 </script>
 
