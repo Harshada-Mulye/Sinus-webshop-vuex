@@ -2,15 +2,12 @@
   <section class="checkout">
     <h2>Kassa</h2>
     <form>
+      <input name="name" placeholder="name" required v-model="name" />
+      <input name="email" placeholder="E-post" required v-model="email" />
+      <input name="address" placeholder="Adress" required v-model="address" />
       <section class="input-double">
-        <input name="firstname" placeholder="Förnamn" required />
-        <input name="surname" placeholder="Efternamn" required />
-      </section>
-      <input name="email" placeholder="E-post" required />
-      <input name="address" placeholder="Adress" required />
-      <section class="input-double">
-        <input name="zipcode" placeholder="Postnummer" required />
-        <input name="city" placeholder="Ort" required />
+        <input name="zipcode" placeholder="Postnummer" required v-model="zip" />
+        <input name="city" placeholder="Ort" required v-model="city" />
       </section>
       <h3>Välj betalsätt</h3>
 
@@ -32,8 +29,15 @@
 
 <script>
 export default {
-  cart() {
-    return this.$store.state.user.cart.id;
+  props: ["getUser"],
+  data() {
+    return {
+      name: this.getUser.name,
+      email: this.getUser.email,
+      address: this.getUser.address.street,
+      zip: this.getUser.address.zip,
+      city: this.getUser.address.city,
+    };
   },
   methods: {
     payment() {
@@ -45,7 +49,7 @@ export default {
           cart.items.push(product.product._id);
         }
       });
-      this.$store.dispatch("postOrders", cart)
+      this.$store.dispatch("postOrders", cart);
     },
   },
 };

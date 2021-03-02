@@ -6,7 +6,7 @@
         <CheckoutCart />
       </section>
       <section class="checkout-container right">
-        <CheckoutForm />
+        <CheckoutForm :getUser="getUser" />
       </section>
     </section>
     <FooterComp />
@@ -24,6 +24,22 @@ export default {
     CheckoutCart,
     CheckoutForm,
     FooterComp,
+  },
+  computed: {
+    getUser() {
+      const emptyUser = {
+        email: "",
+        name: "",
+        address: {
+          street: "",
+          zip: "",
+          city: "",
+        },
+      };
+      if (this.$store.state.user.currentUser)
+        return this.$store.state.user.currentUser;
+      else return emptyUser;
+    },
   },
 };
 </script>
