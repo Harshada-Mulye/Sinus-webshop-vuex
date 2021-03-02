@@ -5,7 +5,7 @@
         <h2>Handla för över 500kr - få fri frakt</h2>
         <p>Gäller endast nya kunder</p>
       </section>
-      <h3>Varukorg ({{cartItemCount}})</h3>
+      <h3>Varukorg ({{ cartItemCount }})</h3>
       <article class="cart-products">
         <h4>Vara</h4>
         <h4>Storlek</h4>
@@ -54,6 +54,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 95%;
+  min-height: 78vh;
   /* border: pink solid 1px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }

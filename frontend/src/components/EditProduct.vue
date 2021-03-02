@@ -151,7 +151,7 @@ button {
   outline: none;
   border-radius: 3px;
   text-transform: uppercase;
-  border: 2px solid #777676;
+  border: 2px solid #313131;
 }
 button:hover {
   cursor: pointer;
