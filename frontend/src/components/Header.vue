@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" id="header">
       <div>
         <img
           class="logo"
@@ -44,7 +44,7 @@
       </div>
     </div>
     <transition name="slideMenu">
-      <nav v-show="showMenu" id="header">
+      <nav v-show="showMenu">
         <div class="links" id="links">
           <router-link to="/">Startsida</router-link>
           <router-link to="/products">Produkter</router-link>
