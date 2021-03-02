@@ -186,7 +186,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  transition: opacity 0.6s linear;
+  transition: opacity 0.8s linear;
 }
 .slideMenu-enter,
 .slideMenu-leave-to {
