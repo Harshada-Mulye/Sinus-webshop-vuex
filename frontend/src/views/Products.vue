@@ -3,7 +3,6 @@
     <Header />
     <ProductList />
     <FooterComp />
-    <Productinfo />
   </div>
 </template>
 

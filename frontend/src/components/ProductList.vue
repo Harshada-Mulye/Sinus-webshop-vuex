@@ -3,9 +3,13 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-           <article v-for="(product,index) in products" :key="index" class="product">
-          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
-           </article>
+          <article
+            v-for="(product, index) in products"
+            :key="index"
+            class="product"
+          >
+            <h2 v-if="index == 2" class="hero-heading">{{ product.title }}</h2>
+          </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -13,7 +17,7 @@
       <section class="products-container">
         <article v-for="product in products" :key="product.id" class="product">
           <h2>{{ product.title }}</h2>
-          <section class="product-item">
+          <section class="product-item" @click="productPopUp">
             <p>{{ product.price }}:-</p>
             <img
               v-if="
@@ -113,30 +117,41 @@
         </article>
       </section>
     </section>
+
+    <div v-if="displayProduct" class="pop-up">
+      
+      <product-info />
+    </div>
   </section>
 </template>
 
 <script>
-import Productinfo from "../components/Productinfo.vue"
+import ProductInfo from './ProductInfo.vue';
 
 export default {
-component: {Productinfo},
-created() {
+  created() {
     return this.$store.dispatch("getProducts");
+  },
+  data: function () {
+    return {
+      displayProduct: false,
+    };
   },
   computed: {
     products() {
       return this.$store.state.products;
     },
   },
-  methods:{
-
-    addToCart(product)
-    {
-      
-       this.$store.dispatch("addToCart",{product,quantity:1})
-  
-    }
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch("addToCart", { product, quantity: 1 });
+    },
+    productPopUp() {
+      this.displayProduct = true;
+    },
+  },
+  components: {
+    ProductInfo
   }
 };
 </script>
@@ -274,5 +289,18 @@ button:active,
 button:hover {
   background-color: #e84b38;
   color: white;
+}
+.pop-up{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 130%;
+  width: 100%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
 }
 </style>
