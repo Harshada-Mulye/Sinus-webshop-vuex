@@ -115,13 +115,11 @@ export default {
       location.reload();
     },
     openMenu() {
-      document.getElementById("links").style.visibility = "visible";
       this.showMenu = true;
       let counter;
       document.getElementById("header").addEventListener("mouseleave", () => {
         counter = setTimeout(() => {
           this.showMenu = false;
-          document.getElementById("links").style.visibility = "hidden";
         }, 800);
       });
       document.getElementById("header").addEventListener("mouseenter", () => {
@@ -198,7 +196,7 @@ nav {
 }
 .slideMenu-enter-active,
 .slideMenu-leave-active {
-  transition: all 0.6s;
+  transition: all 0.8s;
 }
 a {
   text-decoration: none;
