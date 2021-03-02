@@ -3,13 +3,9 @@
     <section class="products-wrapper">
       <section class="hero-container">
         <article class="hero-product">
-          <article
-            v-for="(product, index) in products"
-            :key="index"
-            class="product"
-          >
-            <h2 v-if="index == 2" class="hero-heading">{{ product.title }}</h2>
-          </article>
+           <article v-for="(product,index) in products" :key="index" class="product">
+          <h2 v-if="index==2" class="hero-heading">{{product.title}}</h2>
+           </article>
           <img src="../assets/items/skateboard-greta.png" alt="skateboard" />
         </article>
         <img class="sale-img" src="../assets/items/left-sale.svg" alt="sale" />
@@ -34,7 +30,7 @@
               src="../assets/items/hoodie-ash.png"
               alt="hoodie"
             />
-            <img
+            <img 
               v-if="
                 product.title === 'Hoodie' &&
                 product.shortDesc === 'Ocean unisex'
@@ -62,7 +58,7 @@
               src="../assets/items/skateboard-generic.png"
               alt="hoodie"
             />
-            <img
+            <img @click="showProductInfo = true"
               v-if="product.title === 'Tricky'"
               src="../assets/items/skateboard-generic.png"
               alt="hoodie"
@@ -82,7 +78,7 @@
               src="../assets/items/wheel-spinner.png"
               alt="hoodie"
             />
-            <img
+            <img 
               v-if="product.title === 'Wave'"
               src="../assets/items/wheel-wave.png"
               alt="hoodie"
@@ -117,26 +113,20 @@
         </article>
       </section>
     </section>
-
-    <div v-if="displayProduct" class="pop-up">
-      
-      <product-info />
+    
+    <div v-if="displayProduct" class="pop-up"> 
+       
+       <product-info />
     </div>
   </section>
 </template>
 
 <script>
-<<<<<<< HEAD
 import ProductInfo from './ProductInfo.vue';
 
 export default {
-=======
-import Productinfo from "../components/Productinfo.vue";
-
-export default {
-  component: { Productinfo },
->>>>>>> e7796f2d5c5be6e7c816957d8b154348e5cbf884
-  created() {
+  
+created() {
     return this.$store.dispatch("getProducts");
   },
   data: function () {
@@ -145,28 +135,24 @@ export default {
     };
   },
   computed: {
-    products() {
+    products() { 
       return this.$store.state.products;
     },
   },
-  methods: {
-    addToCart(product) {
-      this.$store.dispatch("addToCart", { product, quantity: 1 });
+  methods:{
+    addToCart(product)
+    {    
+       this.$store.dispatch("addToCart",{product,quantity:1})
     },
-<<<<<<< HEAD
-    productPopUp() {
+    productPopUp(){
       this.displayProduct = true;
     },
   },
-  components: {
+  component: {
     ProductInfo
   }
-=======
-  },
->>>>>>> e7796f2d5c5be6e7c816957d8b154348e5cbf884
 };
 </script>
-
 <style scoped>
 .wrapper {
   display: flex;
@@ -178,7 +164,7 @@ export default {
 .products-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  /* width: 95%; */
+  width: 95%;
   /* border: black solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
@@ -302,8 +288,7 @@ button:hover {
   color: white;
 }
 .pop-up{
-  
-  display: flex;
+  display:flex;
   justify-content: center;
   align-items: center;
   position: absolute;
