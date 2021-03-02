@@ -113,9 +113,8 @@ export default {
       this.showMenu = !this.showMenu;
     },
     logOut() {
-      if (this.$route.name == "Account") {
-        this.$router.push("/");
-      }
+      if (this.$route.name == "Account") this.$router.push("/");
+      else if (this.$route.name == "Admin") this.$router.push("/");
       location.reload();
     },
   },
