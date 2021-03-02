@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="editProduct">
       <div class="header">
-        <h1>Edit Product</h1>
+        <h1>Ändra Produkt</h1>
         <img
           src="@/assets/icons/close-black.svg"
           alt="close"
@@ -10,7 +10,7 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
-      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
+      <input type="text" required placeholder="Kategori" v-model="category" />
       <input type="number" required placeholder="Pris" v-model="price" />
       <input
         type="text"
@@ -18,30 +18,61 @@
         placeholder="Kort beskrivning"
         v-model="shortDesc"
       />
-      <input type="text" required placeholder="Bild url" v-model="img" />
-      <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
-      <button>Edit product</button>
+      <select v-model="imgFile">
+        <option value="hoodie-fire.png">Hoodie fire</option>
+        <option value="hoodie-ash.png">Hoodie ash</option>
+        <option value="hoodie-ocean.png">Hoodie ocean</option>
+        <option value="skateboard-greta.png">Skateboard Greta</option>
+        <option value="skateboard-generic.png">Default Skateboard</option>
+        <option value="wheel-rocket.png">Wheel rocket</option>
+        <option value="wheel-spinner.png">Wheel spinner</option>
+        <option value="wheel-wave.png">Wheel wave</option>
+      </select>
+      <textarea
+        required
+        placeholder="Beskrivning"
+        v-model="longDesc"
+      ></textarea>
+      <button>Ändra</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["obj"],
   data() {
     return {
-      title: "",
-      price: "",
-      shortDesc: "",
-      desc: "",
-      img: null,
+      title: this.obj.product.title,
+      category: this.obj.product.category,
+      price: this.obj.product.price,
+      shortDesc: this.obj.product.shortDesc,
+      longDesc: this.obj.product.longDesc,
+      imgFile: this.obj.product.imgFile,
     };
   },
   methods: {
     closeEditProduct() {
       this.$emit("closeEditProduct");
     },
-    editProduct() {
-      console.log("edit");
+    async editProduct() {
+      const obj = {
+        id: this.obj.id,
+
+        product: {
+          title: this.title,
+          category: this.category,
+          price: this.price,
+          shortDesc: this.shortDesc,
+          longDesc: this.longDesc,
+          imgFile: this.imgFile,
+        },
+      };
+      await this.$store.dispatch("editProduct", obj);
+      this.$router.push("/account").catch((error) => {
+        if (error.name != "NavigationDuplicated") throw error;
+        this.$emit("closeEditProduct");
+      });
     },
   },
 };
@@ -95,6 +126,13 @@ input {
   border: 2px solid #c0c0c0;
   border-radius: 3px;
 }
+select {
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+}
 textarea {
   height: 100px;
   width: 85%;
@@ -115,11 +153,12 @@ button {
   font-weight: bold;
   color: white;
   background: #ffd700;
-  color: rgb(73, 73, 73);
+  color: black;
   border: none;
   outline: none;
   border-radius: 3px;
   text-transform: uppercase;
+  border: 2px solid #313131;
 }
 button:hover {
   cursor: pointer;

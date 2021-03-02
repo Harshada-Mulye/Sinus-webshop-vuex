@@ -126,9 +126,16 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import ProductInfo from './ProductInfo.vue';
 
 export default {
+=======
+import Productinfo from "../components/Productinfo.vue";
+
+export default {
+  component: { Productinfo },
+>>>>>>> e7796f2d5c5be6e7c816957d8b154348e5cbf884
   created() {
     return this.$store.dispatch("getProducts");
   },
@@ -146,6 +153,7 @@ export default {
     addToCart(product) {
       this.$store.dispatch("addToCart", { product, quantity: 1 });
     },
+<<<<<<< HEAD
     productPopUp() {
       this.displayProduct = true;
     },
@@ -153,6 +161,9 @@ export default {
   components: {
     ProductInfo
   }
+=======
+  },
+>>>>>>> e7796f2d5c5be6e7c816957d8b154348e5cbf884
 };
 </script>
 
@@ -167,7 +178,7 @@ export default {
 .products-wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  width: 95%;
+  /* width: 95%; */
   /* border: black solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }

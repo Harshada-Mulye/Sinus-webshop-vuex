@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="addProduct">
       <div class="header">
-        <h1>Add Product</h1>
+        <h1>Lägg till ny produkt</h1>
         <img
           src="@/assets/icons/close-black.svg"
           alt="close"
@@ -10,7 +10,7 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
-      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
+      <input type="text" required placeholder="Kategori" v-model="category" />
       <input type="number" required placeholder="Pris" v-model="price" />
       <input
         type="text"
@@ -18,9 +18,23 @@
         placeholder="Kort beskrivning"
         v-model="shortDesc"
       />
-      <input type="text" required placeholder="Bild url" v-model="img" />
-      <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
-      <button>Add Product</button>
+      <select v-model="imgFile" required>
+        <option value="" disabled selected>Välj bild</option>
+        <option value="hoodie-fire.png">Hoodie fire</option>
+        <option value="hoodie-ash.png">Hoodie ash</option>
+        <option value="hoodie-ocean.png">Hoodie ocean</option>
+        <option value="skateboard-greta.png">Skateboard Greta</option>
+        <option value="skateboard-generic.png">Default Skateboard</option>
+        <option value="wheel-rocket.png">Wheel rocket</option>
+        <option value="wheel-spinner.png">Wheel spinner</option>
+        <option value="wheel-wave.png">Wheel wave</option>
+      </select>
+      <textarea
+        required
+        placeholder="Beskrivning"
+        v-model="longDesc"
+      ></textarea>
+      <button>Lägg till</button>
     </form>
   </div>
 </template>
@@ -30,10 +44,11 @@ export default {
   data() {
     return {
       title: "",
+      category: "",
       price: "",
       shortDesc: "",
-      desc: "",
-      img: null,
+      longDesc: "",
+      imgFile: "",
     };
   },
   methods: {
@@ -43,10 +58,11 @@ export default {
     async addProduct() {
       const newProduct = {
         title: this.title,
+        category: this.category,
         price: this.price,
         shortDesc: this.shortDesc,
-        longDesc: this.desc,
-        imgFile: this.img,
+        longDesc: this.longDesc,
+        imgFile: this.imgFile,
       };
       await this.$store.dispatch("addProduct", newProduct);
       this.$router.push("/account").catch((error) => {
@@ -106,13 +122,20 @@ input {
   border: 2px solid #c0c0c0;
   border-radius: 3px;
 }
+select {
+  width: 90%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #c0c0c0;
+  border-radius: 3px;
+}
 textarea {
   height: 100px;
   width: 85%;
   margin-bottom: 20px;
   border: 2px solid #c0c0c0;
   border-radius: 3px;
-    padding: 10px 0 0 10px;
+  padding: 10px 0 0 10px;
 }
 label {
   font-weight: bold;

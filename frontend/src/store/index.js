@@ -13,12 +13,6 @@ export default new Vuex.Store({
     getProducts(state, payload) {
       state.products = payload
     },
-    addNewProduct(state, payload) {
-      state.products.push(payload)
-    },
-    deleteProduct(state, payload) {
-      state.products = state.products.filter(product => product._id !== payload);
-    }
   },
   actions: {
     async getProducts(context) {
@@ -27,11 +21,19 @@ export default new Vuex.Store({
     },
     async deleteProduct(context, payload) {
       await API.deleteProduct(payload)
-      context.commit("deleteProduct", payload)
+      await context.dispatch("getProducts")
     },
     async addProduct(context, payload) {
       await API.addProduct(payload)
-      context.commit("addNewProduct", payload)
+      await context.dispatch("getProducts")
+    },
+    async getSingleProduct(context, payload) {
+      const response = await API.getSingleProduct(payload)
+      return response
+    },
+    async editProduct(context, payload) {
+      await API.editProduct(payload)
+      await context.dispatch("getProducts")
     }
   },
   modules: {

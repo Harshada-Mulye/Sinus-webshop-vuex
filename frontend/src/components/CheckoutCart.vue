@@ -5,9 +5,8 @@
         <h2>Handla för över 500kr - få fri frakt</h2>
         <p>Gäller endast nya kunder</p>
       </section>
-      <h3>Varukorg (1)</h3>
+      <h3>Varukorg ({{ cartItemCount }})</h3>
       <article class="cart-products">
-        
         <h4>Vara</h4>
         <h4>Storlek</h4>
         <h4>Antal</h4>
@@ -15,37 +14,37 @@
       </article>
       <hr />
       <section class="cart-productdetails">
-         <div v-for="item in cart" :key="item.id" class="itemdetails">
-           
-    
-<img :src="require('@/assets/items/' + item.product.imgFile)" />
+        <div v-for="item in cart" :key="item.id" class="itemdetails">
+          <img :src="require('@/assets/items/' + item.product.imgFile)" />
 
-      
-        <h4>Onesize</h4>
-        <h4>{{item.quantity}} </h4>
-        <h4> {{ item.quantity *item.product.price  }} </h4>
-         </div>
+          <h4>Onesize</h4>
+          <h4>{{ item.quantity }}</h4>
+          <h4>{{ item.quantity * item.product.price }}</h4>
+        </div>
       </section>
     </section>
     <section class="cart-bottom">
       <hr />
-      <span>Totalt: {{cartTotalPrice}}kr</span>
+      <span>Totalt: {{ cartTotalPrice }}kr</span>
     </section>
   </section>
 </template>
 
 <script>
 export default {
-   computed: {
+  computed: {
     cart() {
       console.log(this.$store.state.user.cart);
       return this.$store.state.user.cart;
     },
-    
+
     cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
-    }
-     }
+    },
+    cartItemCount() {
+      return this.$store.getters.cartItemCount;
+    },
+  },
 };
 </script>
 
@@ -55,6 +54,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 95%;
+  min-height: 78vh;
   /* border: pink solid 1px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
@@ -82,7 +82,7 @@ h2 h3 {
 
 p {
   text-align: left;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: #636262;
 }
 
@@ -128,16 +128,16 @@ span {
   font-size: 0.9rem;
   font-weight: bold;
 }
-.cart-productdetails{
+.cart-productdetails {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.itemdetails{
-  display:grid;
- grid-template-rows: auto;
-  grid-template-columns:1fr 1fr 1fr 1fr ;
+.itemdetails {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 img {
   width: 120px;

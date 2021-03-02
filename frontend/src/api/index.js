@@ -76,7 +76,25 @@ export async function deleteProduct(id) {
 export async function addProduct(obj) {
   try {
     const response = await axios.post(`${PRODUCTS}`, obj)
-    return response 
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getSingleProduct(id) {
+  try {
+    const response = await axios.get(`${PRODUCTS}${id}`)
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function editProduct(obj) {
+  try {
+    const response = await axios.patch(`${PRODUCTS}${obj.id}`, obj.product)
+    return response
   } catch (error) {
     console.log(error)
   }

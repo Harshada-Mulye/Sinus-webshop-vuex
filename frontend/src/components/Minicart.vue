@@ -18,22 +18,23 @@
     </div>
     </section>-->
   <section class="cart-wrapper">
-    <section class="cart-container">
-      <section v-for="item in cart" :key="item.id" class="item">
+    <section  class="cart-container">
+      <section  v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
 
-        <section class="quantity">
-          <span>-</span><span>1</span><span>+</span>
-        </section>
         <section class="remove">
           <img
-            src="@/assets/icons/close.svg"
+            src="@/assets/icons/trash-can.svg"
             alt="close"
             @click.prevent="removeProductFromCart(item.product)"
           />
         </section>
         <!-- <div> -->
-        <span> {{ item.quantity }}* {{ item.product.price }}</span>
+        <span> {{ item.product.price }}</span>
+
+        <section class="quantity">
+          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span><span @click="increment(item)">+</span>
+        </section>
 
         <!-- </div> -->
         <hr />
@@ -50,9 +51,10 @@
 
 <script>
 export default {
+ 
+  
   computed: {
     cart() {
-      console.log(this.$store.state.user.cart);
       return this.$store.state.user.cart;
     },
     cartTotalPrice() {
@@ -61,10 +63,23 @@ export default {
   },
   methods: {
     removeProductFromCart(product) {
+      event.stopPropagation();
       this.$store.dispatch("removeProductFromCart", product);
     },
     checkOut() {
       this.$router.push({ name: "Checkout" });
+    },
+    decrement(item) {
+     event.stopPropagation();
+      console.log("decrement");
+      this.$store.dispatch("decrementQuantity", item);
+      console.log(this.$store.state.user.cart);
+    },
+    increment(item) {
+      event.stopPropagation();
+      console.log("increment");
+      this.$store.dispatch("incrementQuantity", item);
+      console.log(this.$store.state.user.cart);
     },
   },
 };
@@ -97,8 +112,8 @@ export default {
   grid-template-rows: auto;
   /* border: yellow solid 2px; */
   align-items: center;
-  /* background-color: red;
-  grid-gap: 10px; */
+  /* background-color: red; */
+  /* grid-gap: 10px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
@@ -119,10 +134,14 @@ img {
   justify-content: flex-end;
 }
 .quantity {
-  grid-column: 3;
+  grid-column: 4;
   /* background-color: lime; */
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+
+.quantity > span:nth-child(2) {
+  font-weight: bold;
 }
 
 /* div > img {
@@ -130,8 +149,8 @@ img {
   display: flex;
   align-self: flex-end;
 } */
-div > span {
-  grid-column: 1 / span 4;
+section > span {
+  grid-column: 1 / span 3;
   /* background-color: lime; */
 }
 
@@ -142,7 +161,7 @@ hr {
 h1 {
   font-family: sans-serif;
   font-size: 0.9rem;
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   /* background-color: lime; */
 }
 /* span {
