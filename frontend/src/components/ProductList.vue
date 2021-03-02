@@ -19,75 +19,7 @@
           <h2>{{ product.title }}</h2>
           <section class="product-item" @click="showModal(product)">
             <p>{{ product.price }}:-</p>
-            <img
-              v-if="
-                product.title === 'Hoodie' &&
-                product.shortDesc === 'Fire unisex'
-              "
-              src="../assets/items/hoodie-fire.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="
-                product.title === 'Hoodie' && product.shortDesc === 'Ash unisex'
-              "
-              src="../assets/items/hoodie-ash.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="
-                product.title === 'Hoodie' &&
-                product.shortDesc === 'Ocean unisex'
-              "
-              src="../assets/items/hoodie-ocean.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Gretas Fury'"
-              src="../assets/items/skateboard-greta.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Flipper'"
-              src="../assets/items/skateboard-generic.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Awesome'"
-              src="../assets/items/skateboard-generic.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Swag'"
-              src="../assets/items/skateboard-generic.png"
-              alt="hoodie"
-            />
-            <img
-              @click="showProductInfo = true"
-              v-if="product.title === 'Tricky'"
-              src="../assets/items/skateboard-generic.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Hiphop'"
-              src="../assets/items/skateboard-generic.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Rocket'"
-              src="../assets/items/wheel-rocket.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Spinner'"
-              src="../assets/items/wheel-spinner.png"
-              alt="hoodie"
-            />
-            <img
-              v-if="product.title === 'Wave'"
-              src="../assets/items/wheel-wave.png"
-              alt="hoodie"
-            />
+            <img :src="require('@/assets/items/' + product.imgFile)" />
             <div>
               <img src="../assets/items/star.svg" alt="star" />
               <img src="../assets/items/star.svg" alt="star" />
@@ -136,8 +68,8 @@ export default {
       this.$store.dispatch("addToCart", { product, quantity: 1 });
     },
     showModal(product) {
-      this.$emit("showModal", product)
-    }
+      this.$emit("showModal", product);
+    },
   },
 };
 </script>
