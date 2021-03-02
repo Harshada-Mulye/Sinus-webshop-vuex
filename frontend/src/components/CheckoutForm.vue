@@ -37,18 +37,15 @@ export default {
   },
   methods: {
     payment() {
-      let cart = {
+      const cart = {
         items: [],
       };
-      let array = [];
-
-      this.$store.state.user.cart.forEach((element) => {
-        array.push(element.product._id);
+      this.$store.state.user.cart.forEach((product) => {
+        for (let i = 0; i < product.quantity; i++) {
+          cart.items.push(product.product._id);
+        }
       });
-      cart.items = array;
-      this.$store.dispatch("postOrders", cart);
-
-      console.log(cart);
+      this.$store.dispatch("postOrders", cart)
     },
   },
 };
