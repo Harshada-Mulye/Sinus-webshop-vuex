@@ -47,8 +47,11 @@ export default {
       console.log(id);
     },
     async editProduct(id) {
-      const product = await this.$store.dispatch("getSingleProduct", id);
-      this.$emit("editProduct", product);
+      const obj = {
+        id: id,
+        product: await this.$store.dispatch("getSingleProduct", id),
+      };
+      this.$emit("editProduct", obj);
     },
     async deleteProduct(id, name) {
       if (confirm("Är du säker på att du vill produkten " + name))
@@ -57,9 +60,6 @@ export default {
     },
   },
   async created() {
-    await this.$store.dispatch("getProducts");
-  },
-  async updated() {
     await this.$store.dispatch("getProducts");
   },
 };

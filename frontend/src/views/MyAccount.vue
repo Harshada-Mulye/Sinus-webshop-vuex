@@ -3,7 +3,7 @@
     <Header />
 
     <div v-if="this.$store.state.user.currentUser.role == 'admin'">
-      <EditProduct v-if="showEditProduct" @closeEditProduct="closeEditProduct" :product="product"/>
+      <EditProduct v-if="showEditProduct" @closeEditProduct="closeEditProduct" :obj="obj"/>
       <AddProduct v-if="showAddProduct" @closeAddProduct="closeAddProduct"/>
       <AdminCrud @addProduct="addProduct" @editProduct="editProduct"/>
     </div>
@@ -36,7 +36,7 @@ export default {
     return {
       showAddProduct: false,
       showEditProduct: false,
-      product: null,
+      obj: null,
     }
   },
   methods: {
@@ -49,8 +49,8 @@ export default {
     closeAddProduct() {
       this.showAddProduct = false
     },
-    editProduct(product) {
-      this.product = product
+    editProduct(obj) {
+      this.obj = obj
       this.showEditProduct = true
     },
     closeEditProduct() {

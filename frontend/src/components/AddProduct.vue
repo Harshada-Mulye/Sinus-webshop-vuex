@@ -18,8 +18,21 @@
         placeholder="Kort beskrivning"
         v-model="shortDesc"
       />
-      <input type="text" required placeholder="Bild url" v-model="img" />
-      <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
+      <select v-model="imgFile">
+        <option value="hoodie-fire.png">Hoodie fire</option>
+        <option value="hoodie-ash.png">Hoodie ash</option>
+        <option value="hoodie-ocean.png">Hoodie ocean</option>
+        <option value="skateboard-greta.png">Skateboard Greta</option>
+        <option value="skateboard-generic.png">Default Skateboard</option>
+        <option value="wheel-rocket.png">Wheel rocket</option>
+        <option value="wheel-spinner.png">Wheel spinner</option>
+        <option value="wheel-wave.png">Wheel wave</option>
+      </select>
+      <textarea
+        required
+        placeholder="Beskrivning"
+        v-model="longDesc"
+      ></textarea>
       <button>Lägg till</button>
     </form>
   </div>
@@ -33,8 +46,8 @@ export default {
       category: "",
       price: "",
       shortDesc: "",
-      desc: "",
-      img: null,
+      longDesc: "",
+      imgFile: "",
     };
   },
   methods: {
@@ -47,8 +60,8 @@ export default {
         category: this.category,
         price: this.price,
         shortDesc: this.shortDesc,
-        longDesc: this.desc,
-        imgFile: this.img,
+        longDesc: this.longDesc,
+        imgFile: this.imgFile,
       };
       await this.$store.dispatch("addProduct", newProduct);
       this.$router.push("/account").catch((error) => {
@@ -114,7 +127,7 @@ textarea {
   margin-bottom: 20px;
   border: 2px solid #c0c0c0;
   border-radius: 3px;
-    padding: 10px 0 0 10px;
+  padding: 10px 0 0 10px;
 }
 label {
   font-weight: bold;

@@ -18,8 +18,21 @@
         placeholder="Kort beskrivning"
         v-model="shortDesc"
       />
-      <input type="text" required placeholder="Bild url" v-model="img" />
-      <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
+      <select v-model="imgFile">
+        <option value="hoodie-fire.png">Hoodie fire</option>
+        <option value="hoodie-ash.png">Hoodie ash</option>
+        <option value="hoodie-ocean.png">Hoodie ocean</option>
+        <option value="skateboard-greta.png">Skateboard Greta</option>
+        <option value="skateboard-generic.png">Default Skateboard</option>
+        <option value="wheel-rocket.png">Wheel rocket</option>
+        <option value="wheel-spinner.png">Wheel spinner</option>
+        <option value="wheel-wave.png">Wheel wave</option>
+      </select>
+      <textarea
+        required
+        placeholder="Beskrivning"
+        v-model="longDesc"
+      ></textarea>
       <button>Ändra</button>
     </form>
   </div>
@@ -27,23 +40,39 @@
 
 <script>
 export default {
-  props: ["product"],
+  props: ["obj"],
   data() {
     return {
-      title: this.product.title,
-      category: this.product.category,
-      price: this.product.price,
-      shortDesc: this.product.shortDesc,
-      desc: this.product.longDesc,
-      img: this.product.imgFile,
+      title: this.obj.product.title,
+      category: this.obj.product.category,
+      price: this.obj.product.price,
+      shortDesc: this.obj.product.shortDesc,
+      longDesc: this.obj.product.longDesc,
+      imgFile: this.obj.product.imgFile,
     };
   },
   methods: {
     closeEditProduct() {
       this.$emit("closeEditProduct");
     },
-    editProduct() {
-      console.log("test");
+    async editProduct() {
+      const obj = {
+        id: this.obj.id,
+
+        product: {
+          title: this.title,
+          category: this.category,
+          price: this.price,
+          shortDesc: this.shortDesc,
+          longDesc: this.longDesc,
+          imgFile: this.imgFile,
+        },
+      };
+      await this.$store.dispatch("editProduct", obj);
+      this.$router.push("/account").catch((error) => {
+        if (error.name != "NavigationDuplicated") throw error;
+        this.$emit("closeEditProduct");
+      });
     },
   },
 };

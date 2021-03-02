@@ -90,3 +90,12 @@ export async function getSingleProduct(id) {
     console.log(error)
   }
 }
+
+export async function editProduct(obj) {
+  try {
+    const response = await axios.patch(`${PRODUCTS}${obj.id}`, obj.product)
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}
