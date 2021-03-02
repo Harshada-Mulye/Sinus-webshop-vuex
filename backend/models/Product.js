@@ -32,10 +32,10 @@ module.exports = {
     },
 
     async create(body){
-        let {title, price, shortDesc, longDesc, imgFile} = body
+        let {title, price, shortDesc, longDesc, imgFile, category} = body
         let serial = Date.now()
         try{
-            const product = await products.insert({title, price, shortDesc, longDesc, imgFile, serial})
+            const product = await products.insert({title, price, shortDesc, longDesc, imgFile, serial, category})
             return {error: false, product}
         }catch(err){
             return {error: true, message:err}

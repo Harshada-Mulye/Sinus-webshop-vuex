@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div class="header">
-      <h1><span>Admin</span> view</h1>
-      <button class="add" @click="addProduct">Add Product</button>
+      <h1><span>Admin</span> sida</h1>
+      <button class="add" @click="addProduct">Lägg till produkt</button>
     </div>
     <table>
       <tr>
-        <th>Image</th>
+        <th>Bild</th>
         <th>Kategori</th>
         <th>Namn</th>
         <th>Pris</th>
@@ -18,13 +18,13 @@
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
         <td>
-          <button class="show" @click="showProduct(product._id)">Show</button>
-          <button class="edit" @click="editProduct(product._id)">Edit</button>
+          <button class="show" @click="showProduct(product._id)">Visa</button>
+          <button class="edit" @click="editProduct(product._id)">Ändra</button>
           <button
             class="delete"
             @click="deleteProduct(product._id, product.title)"
           >
-            Delete
+            Ta bort
           </button>
         </td>
       </tr>
@@ -46,8 +46,9 @@ export default {
     showProduct(id) {
       console.log(id);
     },
-    editProduct() {
-      this.$emit("editProduct");
+    async editProduct(id) {
+      const product = await this.$store.dispatch("getSingleProduct", id);
+      this.$emit("editProduct", product);
     },
     async deleteProduct(id, name) {
       if (confirm("Är du säker på att du vill produkten " + name))
@@ -70,6 +71,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 82vh;
 }
 .header {
   width: 60%;
@@ -108,7 +110,7 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
-  width: 60px;
+  min-width: 60px;
 }
 button:hover {
   cursor: pointer;
@@ -118,13 +120,12 @@ button:hover {
 }
 .edit {
   background: #ffd700;
-  color: rgb(73, 73, 73);
+  color: black;
 }
 .delete {
   background: rgb(240, 68, 68);
 }
 .add {
-  width: 100px;
   background: rgb(13, 189, 13);
 }
 </style>

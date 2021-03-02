@@ -55,7 +55,7 @@
         >
         <a href="#" v-else @click="logOut">Logga ut</a>
         <router-link to="/account" v-if="this.$store.state.user.currentUser"
-          >My account</router-link
+          >Min sida</router-link
         >
       </nav>
     </transition>

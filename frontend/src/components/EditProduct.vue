@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="editProduct">
       <div class="header">
-        <h1>Edit Product</h1>
+        <h1>Ändra Produkt</h1>
         <img
           src="@/assets/icons/close-black.svg"
           alt="close"
@@ -10,7 +10,7 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
-      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
+      <input type="text" required placeholder="Kategori" v-model="category" />
       <input type="number" required placeholder="Pris" v-model="price" />
       <input
         type="text"
@@ -20,20 +20,22 @@
       />
       <input type="text" required placeholder="Bild url" v-model="img" />
       <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
-      <button>Edit product</button>
+      <button>Ändra</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["product"],
   data() {
     return {
-      title: "",
-      price: "",
-      shortDesc: "",
-      desc: "",
-      img: null,
+      title: this.product.title,
+      category: this.product.category,
+      price: this.product.price,
+      shortDesc: this.product.shortDesc,
+      desc: this.product.longDesc,
+      img: this.product.imgFile,
     };
   },
   methods: {
@@ -41,7 +43,7 @@ export default {
       this.$emit("closeEditProduct");
     },
     editProduct() {
-      console.log("edit");
+      console.log("test");
     },
   },
 };
@@ -115,11 +117,12 @@ button {
   font-weight: bold;
   color: white;
   background: #ffd700;
-  color: rgb(73, 73, 73);
+  color: black;
   border: none;
   outline: none;
   border-radius: 3px;
   text-transform: uppercase;
+  border: 2px solid #777676;
 }
 button:hover {
   cursor: pointer;
