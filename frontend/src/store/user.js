@@ -41,8 +41,57 @@ export default {
             state.cart = state.cart.filter(item => {
                 return item.product.title !== product.title
             })
+        },
+        REMOVE_QUANTITY(state,product){
+            console.log("hello")
+           // state.cart.quantity -=product.quantity
+           let productInCart = state.cart.find(item => {
+           
+            return item.product.title === product.product.title
+           //let productInCart = state.cart.find(item => {
+            //return item.product.title === product.title
+        })
+        if (productInCart) {
+            console.log("hej")
+            console.log(productInCart.product.title)
+            var text = productInCart.quantity
+           
+            var text1 =parseInt(text) 
+            console.log(text1) 
+            if(text1 > 0) {
+            text1 -=1
+
+        console.log(text1) 
+        //state.cart.quantity === text1
+        productInCart.quantity = text1
+        state.cart.quantity =text1
+        return
+    }
+
         }
     },
+    ADD_QUANTITY(state,product){
+        console.log("hello")
+       // state.cart.quantity -=product.quantity
+       let productInCart = state.cart.find(item => {
+       
+        return item.product.title === product.product.title
+       //let productInCart = state.cart.find(item => {
+        //return item.product.title === product.title
+    })
+    if (productInCart) {
+        console.log("hej")
+        console.log(productInCart.title)
+        var text = productInCart.quantity
+        var text1 =parseInt(text) + 1
+    console.log(text1) 
+    //state.cart.quantity === text1
+    productInCart.quantity = text1
+    state.cart.quantity =text1
+
+    }
+}
+},
       
       
 
@@ -82,7 +131,14 @@ export default {
 
             commit('REMOVE_FROM_CART', product)
 
+        },
+        decrementQuantity({commit},product){
+            commit('REMOVE_QUANTITY',product)
+        },
+        incrementQuantity({commit},product){
+            commit('ADD_QUANTITY',product)
         }
+
     },
     getters: {
         cartTotalPrice(state) {
