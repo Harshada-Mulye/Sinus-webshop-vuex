@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <h2>Din orderhisorik</h2>
+    <h2 v-if="this.$store.state.user.currentUser.role == 'customer'">
+      Din orderhisorik
+    </h2>
+    <h2 v-else-if="this.$store.state.user.currentUser.role == 'admin'">
+      Ordrar
+    </h2>
 
     <div class="orders" v-for="(order, index) in orders" :key="index">
       <div class="top">
@@ -14,12 +19,14 @@
 
       <div class="items-container">
         <div class="items" v-for="(item, index) in order.items" :key="index">
-          <h4>{{ item.title }}</h4>
+          <div>
+            <h4>{{ item.title }}</h4>
+          </div>
 
           <img :src="require('@/assets/items/' + item.imgFile)" />
 
           <div class="info-container">
-            <p><span>Pris:</span> {{ item.price }}kr</p>
+            <p class="pris"><span>Pris:</span> {{ item.price }}kr</p>
             <p><span>Antal:</span> {{ item.amount }}st</p>
           </div>
         </div>
@@ -38,7 +45,7 @@ export default {
   },
   computed: {
     orders() {
-      return this.$store.state.user.orders;
+      return this.$store.state.user.orders
     },
   },
 };
@@ -55,13 +62,12 @@ h2 {
 .top {
   display: flex;
   justify-content: space-between;
-}
-h3 {
   margin-bottom: 15px;
 }
 .status {
   text-transform: lowercase;
   font-size: 14px;
+  color: #e84b38;
 }
 .date {
   font-weight: bold;
@@ -69,40 +75,40 @@ h3 {
   color: #e84b38;
 }
 .items-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   border-bottom: 2px solid #c0c0c0;
-  padding-bottom: 10px;
-  margin-bottom: 5px;
-  min-width: 250px;
 }
 .items {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   justify-content: space-between;
-  align-items: left;
-  margin-right: 50px;
+  width: 150px;
 }
 h4 {
   font-size: 18px;
-  margin-bottom: -13px;
+  height: 20px;
 }
 img {
-  width: 135px;
+  width: 100px;
   margin-bottom: 10px;
 }
 
 .info-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   font-size: 13px;
+  margin-bottom: 5px;
 }
 span {
   color: black;
   font-weight: bold;
 }
 .total-price {
-  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-bottom: 40px;
 }
 </style>
