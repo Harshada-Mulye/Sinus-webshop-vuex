@@ -38,14 +38,14 @@
             class="menu-img"
             src="../assets/icons/menu.svg"
             alt="Menu"
-            @click="openMenu"
+            @mouseover="openMenu"
           />
         </div>
       </div>
     </div>
     <transition name="slideMenu">
-      <nav v-show="showMenu">
-        <div class="links">
+      <nav v-show="showMenu" id="header">
+        <div class="links" id="links">
           <router-link to="/">Startsida</router-link>
           <router-link to="/products">Produkter</router-link>
           <router-link to="/account" v-if="this.$store.state.user.currentUser"
@@ -109,13 +109,24 @@ export default {
         });
       else this.$store.dispatch("openLogin");
     },
-    openMenu() {
-      this.showMenu = !this.showMenu;
-    },
     logOut() {
       if (this.$route.name == "Account") this.$router.push("/");
       else if (this.$route.name == "Admin") this.$router.push("/");
       location.reload();
+    },
+    openMenu() {
+      document.getElementById("links").style.visibility = "visible";
+      this.showMenu = true;
+      let counter;
+      document.getElementById("header").addEventListener("mouseleave", () => {
+        counter = setTimeout(() => {
+          this.showMenu = false;
+          document.getElementById("links").style.visibility = "hidden";
+        }, 800);
+      });
+      document.getElementById("header").addEventListener("mouseenter", () => {
+        clearTimeout(counter);
+      });
     },
   },
 };
@@ -152,7 +163,6 @@ p {
 .login {
   width: 45px;
   margin-right: 30px;
-  /* margin-left: 60px; */
 }
 .login:hover {
   cursor: pointer;
@@ -176,6 +186,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  transition: opacity 0.5s linear;
 }
 .slideMenu-enter,
 .slideMenu-leave-to {
@@ -187,7 +198,7 @@ nav {
 }
 .slideMenu-enter-active,
 .slideMenu-leave-active {
-  transition: all 0.4s;
+  transition: all 0.5s;
 }
 a {
   text-decoration: none;
