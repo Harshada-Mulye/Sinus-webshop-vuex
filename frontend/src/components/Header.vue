@@ -150,7 +150,7 @@ p {
   font-family: "Electrolize", sans-serif;
 }
 .login {
-  width: 48px;
+  width: 45px;
   margin-right: 30px;
   /* margin-left: 60px; */
 }
