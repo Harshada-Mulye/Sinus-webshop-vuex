@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container" id="header">
+  <div id="header">
+    <div class="container">
       <div>
         <img
           class="logo"
