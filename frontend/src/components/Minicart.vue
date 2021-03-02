@@ -18,8 +18,8 @@
     </div>
     </section>-->
   <section class="cart-wrapper">
-    <section class="cart-container">
-      <section v-for="item in cart" :key="item.id" class="item">
+    <section  class="cart-container">
+      <section  v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
 
         <section class="remove">
@@ -30,11 +30,10 @@
           />
         </section>
         <!-- <div> -->
-        <span> {{ item.quantity }}* {{ item.product.price }}</span>
+        <span> {{ item.product.price }}</span>
 
         <section class="quantity">
-          <span @click="decrement(item)">-</span><span>1</span
-          ><span @click="increment(item)">+</span>
+          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span><span @click="increment(item)">+</span>
         </section>
 
         <!-- </div> -->
@@ -52,6 +51,8 @@
 
 <script>
 export default {
+ 
+  
   computed: {
     cart() {
       return this.$store.state.user.cart;
@@ -62,17 +63,20 @@ export default {
   },
   methods: {
     removeProductFromCart(product) {
+      event.stopPropagation();
       this.$store.dispatch("removeProductFromCart", product);
     },
     checkOut() {
       this.$router.push({ name: "Checkout" });
     },
     decrement(item) {
+     event.stopPropagation();
       console.log("decrement");
       this.$store.dispatch("decrementQuantity", item);
       console.log(this.$store.state.user.cart);
     },
     increment(item) {
+      event.stopPropagation();
       console.log("increment");
       this.$store.dispatch("incrementQuantity", item);
       console.log(this.$store.state.user.cart);
