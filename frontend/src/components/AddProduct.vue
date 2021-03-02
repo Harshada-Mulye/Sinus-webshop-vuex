@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="addProduct">
       <div class="header">
-        <h1>Add Product</h1>
+        <h1>Lägg till ny produkt</h1>
         <img
           src="@/assets/icons/close-black.svg"
           alt="close"
@@ -10,7 +10,7 @@
         />
       </div>
       <input type="text" required placeholder="Namn" v-model="title" />
-      <!-- <input type="text" required placeholder="Kategori" v-model="category" /> -->
+      <input type="text" required placeholder="Kategori" v-model="category" />
       <input type="number" required placeholder="Pris" v-model="price" />
       <input
         type="text"
@@ -20,7 +20,7 @@
       />
       <input type="text" required placeholder="Bild url" v-model="img" />
       <textarea required placeholder="Beskrivning" v-model="desc"></textarea>
-      <button>Add Product</button>
+      <button>Lägg till</button>
     </form>
   </div>
 </template>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       title: "",
+      category: "",
       price: "",
       shortDesc: "",
       desc: "",
@@ -43,6 +44,7 @@ export default {
     async addProduct() {
       const newProduct = {
         title: this.title,
+        category: this.category,
         price: this.price,
         shortDesc: this.shortDesc,
         longDesc: this.desc,

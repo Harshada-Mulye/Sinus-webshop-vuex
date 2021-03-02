@@ -23,7 +23,7 @@
         <h1>{{ item.product.title }}</h1>
 
         <section class="quantity">
-          <span>-</span><span>1</span><span>+</span>
+          <span @click = "decrement(item)" >-</span><span>1</span><span @click = "increment(item)">+</span>
         </section>
         <section class="remove">
           <img
@@ -52,7 +52,7 @@
 export default {
   computed: {
     cart() {
-      console.log(this.$store.state.user.cart);
+     
       return this.$store.state.user.cart;
     },
     cartTotalPrice() {
@@ -66,6 +66,19 @@ export default {
     checkOut() {
       this.$router.push({ name: "Checkout" });
     },
+    decrement(item){
+      console.log("decrement")
+     this.$store.dispatch("decrementQuantity",item)
+     console.log(this.$store.state.user.cart)
+    
+    },
+    increment(item){
+      console.log("increment")
+     this.$store.dispatch("incrementQuantity",item)
+     console.log(this.$store.state.user.cart)
+    
+    }
+
   },
 };
 </script>

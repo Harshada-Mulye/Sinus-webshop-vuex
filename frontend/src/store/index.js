@@ -30,8 +30,13 @@ export default new Vuex.Store({
       context.commit("deleteProduct", payload)
     },
     async addProduct(context, payload) {
-      await API.addProduct(payload)
+      const response = await API.addProduct(payload)
       context.commit("addNewProduct", payload)
+      console.log(response)
+    },
+    async getSingleProduct(context, payload) {
+      const response = await API.getSingleProduct(payload)
+      return response
     }
   },
   modules: {

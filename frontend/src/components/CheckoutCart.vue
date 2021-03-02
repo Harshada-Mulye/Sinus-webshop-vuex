@@ -5,7 +5,7 @@
         <h2>Handla för över 500kr - få fri frakt</h2>
         <p>Gäller endast nya kunder</p>
       </section>
-      <h3>Varukorg (1)</h3>
+      <h3>Varukorg ({{cartItemCount}})</h3>
       <article class="cart-products">
         <h4>Vara</h4>
         <h4>Storlek</h4>
@@ -40,6 +40,9 @@ export default {
 
     cartTotalPrice() {
       return this.$store.getters.cartTotalPrice;
+    },
+    cartItemCount() {
+      return this.$store.getters.cartItemCount;
     },
   },
 };
