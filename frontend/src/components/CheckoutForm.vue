@@ -1,13 +1,13 @@
 <template>
   <section class="checkout">
     <h2>Kassa</h2>
-    <form>
-      <input name="name" placeholder="name" required v-model="name" />
-      <input name="email" placeholder="E-post" required v-model="email" />
-      <input name="address" placeholder="Adress" required v-model="address" />
+    <form @submit="payment">
+      <input type="text" placeholder="Namn" required v-model="name" />
+      <input type="email" placeholder="E-post" required v-model="email" />
+      <input type="text" placeholder="Adress" required v-model="address" />
       <section class="input-double">
-        <input name="zipcode" placeholder="Postnummer" required v-model="zip" />
-        <input name="city" placeholder="Ort" required v-model="city" />
+        <input type="text" placeholder="Postnummer" required v-model="zip" />
+        <input type="text" placeholder="Ort" required v-model="city" />
       </section>
       <h3>Välj betalsätt</h3>
 
@@ -22,7 +22,7 @@
         <span>Betala med kort</span>
         <p>Fyll i uppgifter</p>
       </section>
-      <button @click="payment()">betala</button>
+      <button>betala</button>
     </form>
   </section>
 </template>
@@ -49,7 +49,11 @@ export default {
           cart.items.push(product.product._id);
         }
       });
-      this.$store.dispatch("postOrders", cart);
+      if (cart.items.length > 0) {
+        this.$store.dispatch("postOrders", cart);
+        this.$store.dispatch("emptyCart");
+        alert("Order mottagen");
+      } else alert("Din varukorg är tom.");
     },
   },
 };
