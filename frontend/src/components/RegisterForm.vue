@@ -5,7 +5,7 @@
         <h1>Skapa ny profil</h1>
         <img
           src="@/assets/icons/close.svg"
-          alt="close"
+          class="close"
           @click="closeRegister"
         />
       </div>
@@ -128,9 +128,9 @@ h1 {
   color: black;
   width: 100%;
 }
-img {
-  width: 25px;
-  margin-top: -70px;
+.close {
+  width: 30px;
+  margin-top: -60px;
   margin-right: -27px;
 }
 img:hover {

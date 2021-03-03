@@ -18,7 +18,7 @@
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
         <td>
-          <button class="show" @click="showProduct(product._id)">Visa</button>
+          <button class="show" @click="showProduct(product)">Visa</button>
           <button class="edit" @click="editProduct(product._id)">Ändra</button>
           <button
             class="delete"
@@ -43,8 +43,8 @@ export default {
     addProduct() {
       this.$emit("addProduct");
     },
-    showProduct(id) {
-      console.log(id);
+    showProduct(product) {
+      this.$emit("showProduct", product)
     },
     async editProduct(id) {
       const obj = {

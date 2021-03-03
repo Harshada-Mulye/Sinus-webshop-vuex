@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="header">
     <div class="container">
       <div>
         <img
@@ -24,7 +24,7 @@
               <Minicart />
             </div>
           </div>
-          <p>{{ cartTotalPrice }}</p>
+          <p>{{ cartTotalPrice }}kr</p>
         </div>
         <div class="menu">
           <img
@@ -38,14 +38,14 @@
             class="menu-img"
             src="../assets/icons/menu.svg"
             alt="Menu"
-            @click="openMenu"
+            @mouseover="openMenu"
           />
         </div>
       </div>
     </div>
     <transition name="slideMenu">
       <nav v-show="showMenu">
-        <div class="links">
+        <div class="links" id="links">
           <router-link to="/">Startsida</router-link>
           <router-link to="/products">Produkter</router-link>
           <router-link to="/account" v-if="this.$store.state.user.currentUser"
@@ -65,7 +65,7 @@
               this.$store.state.user.currentUser.role == 'admin'
             "
           >
-            Admin View
+            Admin view
           </router-link>
         </div>
       </nav>
@@ -109,14 +109,22 @@ export default {
         });
       else this.$store.dispatch("openLogin");
     },
-    openMenu() {
-      this.showMenu = !this.showMenu;
-    },
     logOut() {
-      if (this.$route.name == "Account") {
-        this.$router.push("/");
-      }
+      if (this.$route.name == "Account") this.$router.push("/");
+      else if (this.$route.name == "Admin") this.$router.push("/");
       location.reload();
+    },
+    openMenu() {
+      this.showMenu = true;
+      let counter;
+      document.getElementById("header").addEventListener("mouseleave", () => {
+        counter = setTimeout(() => {
+          this.showMenu = false;
+        }, 800);
+      });
+      document.getElementById("header").addEventListener("mouseenter", () => {
+        clearTimeout(counter);
+      });
     },
   },
 };
@@ -151,9 +159,8 @@ p {
   font-family: "Electrolize", sans-serif;
 }
 .login {
-  width: 48px;
+  width: 45px;
   margin-right: 30px;
-  /* margin-left: 60px; */
 }
 .login:hover {
   cursor: pointer;
@@ -177,6 +184,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  transition: opacity 0.8s linear;
 }
 .slideMenu-enter,
 .slideMenu-leave-to {
@@ -188,7 +196,7 @@ nav {
 }
 .slideMenu-enter-active,
 .slideMenu-leave-active {
-  transition: all 0.4s;
+  transition: all 0.8s;
 }
 a {
   text-decoration: none;

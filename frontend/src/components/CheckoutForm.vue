@@ -1,16 +1,13 @@
 <template>
   <section class="checkout">
     <h2>Kassa</h2>
-    <form>
+    <form @submit="payment">
+      <input type="text" placeholder="Namn" required v-model="name" />
+      <input type="email" placeholder="E-post" required v-model="email" />
+      <input type="text" placeholder="Adress" required v-model="address" />
       <section class="input-double">
-        <input name="firstname" placeholder="Förnamn" required />
-        <input name="surname" placeholder="Efternamn" required />
-      </section>
-      <input name="email" placeholder="E-post" required />
-      <input name="address" placeholder="Adress" required />
-      <section class="input-double">
-        <input name="zipcode" placeholder="Postnummer" required />
-        <input name="city" placeholder="Ort" required />
+        <input type="text" placeholder="Postnummer" required v-model="zip" />
+        <input type="text" placeholder="Ort" required v-model="city" />
       </section>
       <h3>Välj betalsätt</h3>
 
@@ -25,30 +22,38 @@
         <span>Betala med kort</span>
         <p>Fyll i uppgifter</p>
       </section>
-      <button @click="payment()">betala</button>
+      <button>betala</button>
     </form>
   </section>
 </template>
 
 <script>
 export default {
-  cart() {
-    return this.$store.state.user.cart.id;
+  props: ["getUser"],
+  data() {
+    return {
+      name: this.getUser.name,
+      email: this.getUser.email,
+      address: this.getUser.address.street,
+      zip: this.getUser.address.zip,
+      city: this.getUser.address.city,
+    };
   },
   methods: {
     payment() {
-      let cart = {
+      const cart = {
         items: [],
       };
-      let array = [];
-
-      this.$store.state.user.cart.forEach((element) => {
-        array.push(element.product._id);
+      this.$store.state.user.cart.forEach((product) => {
+        for (let i = 0; i < product.quantity; i++) {
+          cart.items.push(product.product._id);
+        }
       });
-      cart.items = array;
-      this.$store.dispatch("postOrders", cart);
-
-      console.log(cart);
+      if (cart.items.length > 0) {
+        this.$store.dispatch("postOrders", cart);
+        this.$store.dispatch("emptyCart");
+        alert("Order mottagen");
+      } else alert("Din varukorg är tom.");
     },
   },
 };
