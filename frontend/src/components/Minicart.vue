@@ -1,23 +1,5 @@
 <template>
-  <!--
-    <div v-for="item in cart" :key="item.id" class="item">
-      <h1>{{item.title}}</h1>
-       <div>
-          <a href="#" @click.prevent="">Remove</a>
-        </div>
-        <span> 1* {{ item.price }}</span>
-      <hr />
-      </div>
-    <div>
-      <hr />
-      <p>Sum:799</p>
-  <a href="#" @click.prevent="">Clear Cart</a>
-      <button>Checkout</button>
-      {{item.price}} 
-
-    </div>
-    </section>-->
-  <section class="cart-wrapper">
+ <section class="cart-wrapper">
     <section class="cart-container">
       <section v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
