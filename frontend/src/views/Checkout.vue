@@ -57,7 +57,7 @@ export default {
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 .emptyCart {
-  margin-bottom: 250px;
+  margin-bottom: 16em;
 }
 .checkout-container {
   display: flex;
@@ -69,7 +69,7 @@ export default {
 }
 
 .right {
-  width: 20%;
+  width: 30%;
   padding-left: 0;
   align-self: flex-start;
 }
