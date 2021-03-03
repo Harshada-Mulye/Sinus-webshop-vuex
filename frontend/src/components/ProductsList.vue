@@ -133,6 +133,7 @@ export default {
   border-radius: 8px;
   background: #f7f7f7;
   outline: none;
+  font-size: 0.7rem;
 }
 .product-size button:hover {
   cursor: pointer;
@@ -144,7 +145,7 @@ export default {
   font-weight: bold;
   border-radius: 8px;
   background: #f7f7f7;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   outline: none;
 }
 .addToCart:hover {
