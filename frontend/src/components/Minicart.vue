@@ -18,8 +18,8 @@
     </div>
     </section>-->
   <section class="cart-wrapper">
-    <section  class="cart-container">
-      <section  v-for="item in cart" :key="item.id" class="item">
+    <section class="cart-container">
+      <section v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
 
         <section class="remove">
@@ -33,7 +33,8 @@
         <span> {{ item.product.price }}</span>
 
         <section class="quantity">
-          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span><span @click="increment(item)">+</span>
+          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span
+          ><span @click="increment(item)">+</span>
         </section>
 
         <!-- </div> -->
@@ -51,8 +52,6 @@
 
 <script>
 export default {
- 
-  
   computed: {
     cart() {
       return this.$store.state.user.cart;
@@ -70,7 +69,7 @@ export default {
       this.$router.push({ name: "Checkout" });
     },
     decrement(item) {
-     event.stopPropagation();
+      event.stopPropagation();
       console.log("decrement");
       this.$store.dispatch("decrementQuantity", item);
       console.log(this.$store.state.user.cart);
@@ -90,8 +89,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 300px;
-  min-width: 200px;
+  min-height: 40vh;
+  /* min-width: 200px; */
   margin: 10px;
   /* border: blue solid 2px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
@@ -122,7 +121,7 @@ export default {
 } */
 
 img {
-  width: 10px;
+  width: 27%;
   grid-column: 4;
   /* background-color: lime; */
   display: flex;
