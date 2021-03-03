@@ -5,9 +5,7 @@
       <h2>Villkor</h2>
       <h2>Kontakt</h2>
     </div>
-
     <SocialMedia />
-
     <img src="../assets/icons/klarna.jpg" alt="klarna" />
   </div>
 </template>

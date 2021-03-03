@@ -12,7 +12,11 @@
       :obj="obj"
     />
     <AddProduct v-if="showAddProduct" @closeAddProduct="closeAddProduct" />
-    <AdminCrud @addProduct="addProduct" @editProduct="editProduct" @showProduct="showProduct"/>
+    <AdminCrud
+      @addProduct="addProduct"
+      @editProduct="editProduct"
+      @showProduct="showProduct"
+    />
     <FooterComp />
   </div>
 </template>

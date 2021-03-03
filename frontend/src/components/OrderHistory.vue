@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     orders() {
-      return this.$store.state.user.orders
+      return this.$store.state.user.orders;
     },
   },
 };

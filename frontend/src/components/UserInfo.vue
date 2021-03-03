@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 .container {
-    width: 25%
+  width: 25%;
 }
 .userInfo {
   width: 100%;

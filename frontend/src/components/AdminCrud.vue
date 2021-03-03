@@ -44,7 +44,7 @@ export default {
       this.$emit("addProduct");
     },
     showProduct(product) {
-      this.$emit("showProduct", product)
+      this.$emit("showProduct", product);
     },
     async editProduct(id) {
       const obj = {

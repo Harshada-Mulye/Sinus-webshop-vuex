@@ -6,11 +6,11 @@
 
 <script>
 export default {
-    methods: {
-        goToShop() {
-            this.$router.push('/products')
-        }
-    }
+  methods: {
+    goToShop() {
+      this.$router.push("/products");
+    },
+  },
 };
 </script>
 
@@ -28,7 +28,7 @@ button {
   outline: none;
 }
 button:hover {
-    cursor: pointer;
-    transform:scale(1.2,1.2);
+  cursor: pointer;
+  transform: scale(1.2, 1.2);
 }
 </style>

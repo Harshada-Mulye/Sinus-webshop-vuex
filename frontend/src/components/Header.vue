@@ -33,7 +33,6 @@
             alt="login"
             @click="openLogin"
           />
-          <!-- Lägg till hover funktion -->
           <img
             class="menu-img"
             src="../assets/icons/menu.svg"
