@@ -10,11 +10,15 @@
           <div class="top">
             <h2 class="price">{{ product.price }}kr</h2>
           </div>
-          <img
-            class="product-img"
-            :src="require('@/assets/items/' + product.imgFile)"
-          />
-          <img class="rating" src="@/assets/icons/rating.svg" />
+          <div class="middle">
+            <img
+              class="product-img"
+              :src="require('@/assets/items/' + product.imgFile)"
+            />
+          </div>
+          <div class="bottom">
+            <img class="rating" src="@/assets/icons/rating.svg" />
+          </div>
         </div>
         <div class="product-size">
           <button>XS</button>
@@ -62,7 +66,7 @@ export default {
 }
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 23%);
   justify-content: center;
   gap: 80px;
   width: 50%;
@@ -74,24 +78,29 @@ export default {
   justify-content: space-around;
   border: 2px solid #e84b38;
   border-radius: 10px;
-  min-height: 350px;
   box-sizing: border-box;
+  min-height: 35vh;
 }
 .top {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 15px 0 0;
-    width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 15px 0 0;
+  width: 100%;
 }
 .price {
   color: #e84b38;
   align-self: flex-start;
 }
+.middle {
+  width: 100%;
+}
 .product-img {
-  width: 250px;
-  margin-top: -50px;
+  width: 100%;
+}
+.bottom {
+  width: 100%;
 }
 .rating {
-  width: 80px;
+  width: 60px;
 }
 </style>
