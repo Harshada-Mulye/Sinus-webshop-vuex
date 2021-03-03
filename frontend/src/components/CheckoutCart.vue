@@ -16,7 +16,6 @@
       <section class="cart-productdetails">
         <div v-for="item in cart" :key="item.id" class="itemdetails">
           <img :src="require('@/assets/items/' + item.product.imgFile)" />
-
           <h4>Onesize</h4>
           <h4>{{ item.quantity }}</h4>
           <h4>{{ item.quantity * item.product.price }}</h4>
@@ -34,7 +33,7 @@
 export default {
   computed: {
     cart() {
-     return this.$store.state.user.cart;
+      return this.$store.state.user.cart;
     },
 
     cartTotalPrice() {
@@ -53,8 +52,6 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 95%;
-  /* border: pink solid 1px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
 .cart-top {
@@ -92,8 +89,6 @@ h3 {
   margin-top: 15px;
   display: flex;
   flex-direction: row;
-  /* border: red solid 1px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara  */
 }
 h4 {
   width: 100%;
@@ -115,8 +110,6 @@ span {
   width: 100%;
   justify-content: flex-end;
   align-self: flex-end;
-  /* border: blue solid 1px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara  */
 }
 
 .cart-bottom > span {

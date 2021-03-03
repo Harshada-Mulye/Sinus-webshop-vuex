@@ -10,7 +10,6 @@
         <input type="text" placeholder="Ort" required v-model="city" />
       </section>
       <h3>Välj betalsätt</h3>
-
       <section class="input-radio">
         <input name="radio" type="radio" checked="checked" />
         <span>Klarna</span>
@@ -64,10 +63,8 @@ export default {
   border: #e84b38 solid 1px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  /* justify-content: space-between; */
   flex-direction: column;
   display: flex;
-  /* width: 95%; */
   padding: 20px;
 }
 
@@ -77,16 +74,12 @@ form {
   justify-content: space-between;
   height: 100%;
   margin-top: 20px;
-  /* border: orchid solid 1px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara  */
 }
 
 .input-double {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border: #e84b38 solid 1px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara  */
 }
 
 .input-double > input {

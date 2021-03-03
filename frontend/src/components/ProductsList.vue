@@ -150,5 +150,8 @@ export default {
 }
 .addToCart:hover {
   cursor: pointer;
+  background-color: #e84b38;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 </style>

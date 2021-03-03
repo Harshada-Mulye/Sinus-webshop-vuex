@@ -1,5 +1,5 @@
 <template>
- <section class="cart-wrapper">
+  <section class="cart-wrapper">
     <section class="cart-container">
       <section v-for="item in cart" :key="item.id" class="item">
         <h1>{{ item.product.title }}</h1>
@@ -11,22 +11,17 @@
             @click.prevent="removeProductFromCart(item.product)"
           />
         </section>
-        <!-- <div> -->
         <span> {{ item.product.price * item.quantity }}</span>
 
         <section class="quantity">
           <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span
           ><span @click="increment(item)">+</span>
         </section>
-
-        <!-- </div> -->
         <hr />
       </section>
     </section>
     <div>
-      <!-- <hr /> -->
-      <p>Summa:{{ cartTotalPrice  }}</p>
-      <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
+      <p>Summa: {{ cartTotalPrice }}kr</p>
       <button v-on:click="checkOut">Checkout</button>
     </div>
   </section>
@@ -52,12 +47,12 @@ export default {
     },
     decrement(item) {
       event.stopPropagation();
-     this.$store.dispatch("decrementQuantity", item);
-      },
+      this.$store.dispatch("decrementQuantity", item);
+    },
     increment(item) {
-      event.stopPropagation()
+      event.stopPropagation();
       this.$store.dispatch("incrementQuantity", item);
-      }
+    },
   },
 };
 </script>
@@ -68,40 +63,24 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 40vh;
-  /* min-width: 200px; */
   margin: 10px;
-  /* border: blue solid 2px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 .cart-container {
   display: flex;
   text-align: left;
   flex-direction: column;
-  /* border: red solid 2px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
 
 .item {
-  /* display: flex;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
-  /* border: yellow solid 2px; */
   align-items: center;
-  /* background-color: red; */
-  /* grid-gap: 10px; */
-  /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
-
-/* a {
-  text-align: right;
-} */
 
 img {
   width: 27%;
   grid-column: 4;
-  /* background-color: lime; */
   display: flex;
   justify-content: flex-start;
 }
@@ -112,7 +91,6 @@ img {
 }
 .quantity {
   grid-column: 4;
-  /* background-color: lime; */
   display: flex;
   justify-content: space-between;
 }
@@ -121,14 +99,8 @@ img {
   font-weight: bold;
 }
 
-/* div > img {
-  background-color: lime;
-  display: flex;
-  align-self: flex-end;
-} */
 section > span {
   grid-column: 1 / span 3;
-  /* background-color: lime; */
 }
 
 hr {
@@ -139,11 +111,8 @@ h1 {
   font-family: sans-serif;
   font-size: 0.9rem;
   grid-column: 1 / span 3;
-  /* background-color: lime; */
 }
-/* span {
-  text-align: left;
-} */
+
 button {
   padding: 0;
   border-radius: 5px;
@@ -164,9 +133,6 @@ button:active,
 button:hover {
   background-color: #e84b38;
   color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-
-/* div > hr {
-  margin-top: 40px;
-} */
 </style>
