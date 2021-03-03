@@ -65,7 +65,7 @@
               this.$store.state.user.currentUser.role == 'admin'
             "
           >
-            Admin view
+            Admin sida
           </router-link>
         </div>
       </nav>
