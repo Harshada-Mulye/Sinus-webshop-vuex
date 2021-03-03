@@ -1,7 +1,10 @@
 <template>
   <section>
     <Header />
-    <section class="checkout-wrapper">
+    <section
+      class="checkout-wrapper"
+      v-bind:class="{ emptyCart: this.$store.state.user.cart.length == 0 }"
+    >
       <section class="checkout-container">
         <CheckoutCart />
       </section>
@@ -47,16 +50,18 @@ export default {
 <style scoped>
 .checkout-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   /* border: red solid 1px; */
   /* min-height: 80vh; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
-
+.emptyCart {
+  margin-bottom: 250px;
+}
 .checkout-container {
   display: flex;
-  /* width: 55%; */
+  width: 50%;
   padding: 30px 60px;
   min-height: 450px;
   /* border: green solid 1px; */
@@ -64,7 +69,7 @@ export default {
 }
 
 .right {
-  /* width: 30%; */
+  width: 20%;
   padding-left: 0;
   align-self: flex-start;
 }

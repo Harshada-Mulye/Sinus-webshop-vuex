@@ -6,7 +6,7 @@
       @closeModal="closeModal"
     />
     <Header />
-    <Products @showModal="showModal" />
+    <ProductsList @showModal="showModal" />
     <FooterComp />
   </div>
 </template>
@@ -14,11 +14,11 @@
 <script>
 import Header from "../components/Header.vue";
 import FooterComp from "../components/FooterComp.vue";
-import Products from "../components/Products.vue";
+import ProductsList from "../components/ProductsList.vue";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
-  components: { Header, FooterComp, Products, ProductModal },
+  components: { Header, FooterComp, ProductsList, ProductModal },
   data() {
     return {
       product: null,

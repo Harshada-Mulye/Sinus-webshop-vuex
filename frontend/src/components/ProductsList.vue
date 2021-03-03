@@ -27,7 +27,9 @@
           <button>L</button>
           <button>XL</button>
         </div>
-        <button @click="addToCart(product)">Lägg till i varukorgen</button>
+        <button class="addToCart" @click="addToCart(product)">
+          Lägg till i varukorgen
+        </button>
       </div>
     </div>
     <div class="hero-right">
@@ -65,19 +67,20 @@ export default {
   margin-top: 60px;
 }
 .hero {
-    width: 95%;
+  width: 95%;
 }
 .products {
   display: grid;
   grid-template-columns: repeat(3, 23%);
   justify-content: center;
-  gap: 80px;
+  column-gap: 14%;
+  row-gap: 80px;
   width: 50%;
 }
 .title {
-    font-size: 1.4rem;
-    color: black;
-    margin-bottom: 5px;
+  font-size: 1.4rem;
+  color: black;
+  margin-bottom: 0.2em;
 }
 .img-container {
   display: flex;
@@ -88,10 +91,11 @@ export default {
   border-radius: 10px;
   box-sizing: border-box;
   min-height: 35vh;
-  padding: 0 10px 0 10px;
+  padding: 0 0.8em 0 0.8em;
+  background: #f7f7f7;
 }
 .img-container:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .top {
   display: flex;
@@ -114,5 +118,36 @@ export default {
 }
 .rating {
   width: 4.5em;
+}
+.product-size {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5em 0 0.5em 0;
+  width: 100%;
+}
+.product-size button {
+  width: 17%;
+  height: 2.5em;
+  border: 2px solid #e84b38;
+  font-weight: bold;
+  border-radius: 8px;
+  background: #f7f7f7;
+  outline: none;
+}
+.product-size button:hover {
+  cursor: pointer;
+}
+.addToCart {
+  width: 100%;
+  height: 2.5em;
+  border: 2px solid #e84b38;
+  font-weight: bold;
+  border-radius: 8px;
+  background: #f7f7f7;
+  font-size: 0.9rem;
+  outline: none;
+}
+.addToCart:hover {
+  cursor: pointer;
 }
 </style>

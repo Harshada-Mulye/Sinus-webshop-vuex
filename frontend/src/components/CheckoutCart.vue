@@ -53,7 +53,6 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   width: 95%;
-  min-height: 78vh;
   /* border: pink solid 1px; */
   /* Radera inte dolda borden ovan förrän vi är helt klara */
 }
