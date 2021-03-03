@@ -70,16 +70,12 @@ export default {
     },
     decrement(item) {
       event.stopPropagation();
-      console.log("decrement");
-      this.$store.dispatch("decrementQuantity", item);
-      console.log(this.$store.state.user.cart);
-    },
+     this.$store.dispatch("decrementQuantity", item);
+      },
     increment(item) {
-      event.stopPropagation();
-      console.log("increment");
+      event.stopPropagation()
       this.$store.dispatch("incrementQuantity", item);
-      console.log(this.$store.state.user.cart);
-    },
+      }
   },
 };
 </script>

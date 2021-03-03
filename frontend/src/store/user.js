@@ -43,51 +43,32 @@ export default {
             })
         },
         REMOVE_QUANTITY(state, product) {
-            console.log("hello")
-            // state.cart.quantity -=product.quantity
+           
+           
             let productInCart = state.cart.find(item => {
 
                 return item.product.title === product.product.title
-                //let productInCart = state.cart.find(item => {
-                //return item.product.title === product.title
-            })
+               })
             if (productInCart) {
-                console.log("hej")
-                console.log(productInCart.product.title)
-                var text = productInCart.quantity
-
-                var text1 = parseInt(text)
-                console.log(text1)
+                 var text = productInCart.quantity
+                 var text1 = parseInt(text)
                 if (text1 > 0) {
                     text1 -= 1
-
-                    console.log(text1)
-                    //state.cart.quantity === text1
                     productInCart.quantity = text1
                     state.cart.quantity = text1
                     return
                 }
-
-            }
+             }
         },
         ADD_QUANTITY(state, product) {
-            console.log("hello")
-            // state.cart.quantity -=product.quantity
-            let productInCart = state.cart.find(item => {
-
+           let productInCart = state.cart.find(item => {
                 return item.product.title === product.product.title
-                //let productInCart = state.cart.find(item => {
-                //return item.product.title === product.title
-            })
+              })
             if (productInCart) {
-                console.log("hej")
-                console.log(productInCart.title)
-                var text = productInCart.quantity
+              var text = productInCart.quantity
                 var text1 = parseInt(text) + 1
-                console.log(text1)
-                //state.cart.quantity === text1
-                productInCart.quantity = text1
-                state.cart.quantity = text1
+                  productInCart.quantity = text1
+                  state.cart.quantity = text1
 
             }
         },

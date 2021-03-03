@@ -34,8 +34,7 @@
 export default {
   computed: {
     cart() {
-      console.log(this.$store.state.user.cart);
-      return this.$store.state.user.cart;
+     return this.$store.state.user.cart;
     },
 
     cartTotalPrice() {
