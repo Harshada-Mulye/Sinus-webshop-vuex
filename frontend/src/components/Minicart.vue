@@ -30,7 +30,7 @@
           />
         </section>
         <!-- <div> -->
-        <span> {{ item.product.price }}</span>
+        <span> {{ item.product.price * item.quantity }}</span>
 
         <section class="quantity">
           <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span
@@ -43,7 +43,7 @@
     </section>
     <div>
       <!-- <hr /> -->
-      <p>Summa:{{ cartTotalPrice }}</p>
+      <p>Summa:{{ cartTotalPrice  }}</p>
       <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
       <button v-on:click="checkOut">Checkout</button>
     </div>
