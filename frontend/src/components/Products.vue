@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div class="hero-left">
-      <img src="@/assets/items/hero-left.png" />
+      <img class="hero" src="@/assets/items/hero-left.png" />
     </div>
     <div class="products">
       <div class="product" v-for="(product, index) in products" :key="index">
-        <h1>{{ product.title }}</h1>
-        <div class="img-container">
+        <h1 class="title">{{ product.title }}</h1>
+        <div class="img-container" @click="showModal(product)">
           <div class="top">
             <h2 class="price">{{ product.price }}kr</h2>
           </div>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="@/assets/items/hero-right.png" />
+      <img class="hero" src="@/assets/items/hero-right.png" />
     </div>
   </div>
 </template>
@@ -64,12 +64,20 @@ export default {
   width: 100%;
   margin-top: 60px;
 }
+.hero {
+    width: 95%;
+}
 .products {
   display: grid;
   grid-template-columns: repeat(3, 23%);
   justify-content: center;
   gap: 80px;
   width: 50%;
+}
+.title {
+    font-size: 1.4rem;
+    color: black;
+    margin-bottom: 5px;
 }
 .img-container {
   display: flex;
@@ -80,16 +88,20 @@ export default {
   border-radius: 10px;
   box-sizing: border-box;
   min-height: 35vh;
+  padding: 0 10px 0 10px;
+}
+.img-container:hover {
+    cursor: pointer;
 }
 .top {
   display: flex;
   justify-content: flex-end;
-  margin: 5px 15px 0 0;
   width: 100%;
 }
 .price {
   color: #e84b38;
   align-self: flex-start;
+  font-size: 1.2rem;
 }
 .middle {
   width: 100%;
@@ -101,6 +113,6 @@ export default {
   width: 100%;
 }
 .rating {
-  width: 60px;
+  width: 4.5em;
 }
 </style>
