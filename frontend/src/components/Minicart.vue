@@ -12,10 +12,9 @@
           />
         </section>
         <span> {{ item.product.price * item.quantity }}</span>
-
-        <section class="quantity">
-          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span
-          ><span @click="increment(item)">+</span>
+           <section class="quantity">
+          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span>
+          <span @click="increment(item)">+</span>
         </section>
         <hr />
       </section>
