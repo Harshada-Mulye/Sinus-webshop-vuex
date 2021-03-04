@@ -43,32 +43,32 @@ export default {
             })
         },
         REMOVE_QUANTITY(state, product) {
-           
-           
+
+
             let productInCart = state.cart.find(item => {
 
                 return item.product.title === product.product.title
-               })
+            })
             if (productInCart) {
-                 var text = productInCart.quantity
-                 var text1 = parseInt(text)
+                var text = productInCart.quantity
+                var text1 = parseInt(text)
                 if (text1 > 0) {
                     text1 -= 1
                     productInCart.quantity = text1
                     state.cart.quantity = text1
                     return
                 }
-             }
+            }
         },
         ADD_QUANTITY(state, product) {
-           let productInCart = state.cart.find(item => {
+            let productInCart = state.cart.find(item => {
                 return item.product.title === product.product.title
-              })
+            })
             if (productInCart) {
-              var text = productInCart.quantity
+                var text = productInCart.quantity
                 var text1 = parseInt(text) + 1
-                  productInCart.quantity = text1
-                  state.cart.quantity = text1
+                productInCart.quantity = text1
+                state.cart.quantity = text1
 
             }
         },

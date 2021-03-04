@@ -18,10 +18,6 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style>
 .social-media {
   margin: 0 100px;

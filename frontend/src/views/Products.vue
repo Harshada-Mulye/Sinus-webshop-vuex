@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div>
     <ProductModal
       :product="product"
       v-if="showProductModal"
       @closeModal="closeModal"
     />
     <Header />
-    <ProductList @showModal="showModal" />
+    <ProductsList @showModal="showModal" />
     <FooterComp />
   </div>
 </template>
@@ -14,11 +14,11 @@
 <script>
 import Header from "../components/Header.vue";
 import FooterComp from "../components/FooterComp.vue";
-import ProductList from "../components/ProductList.vue";
+import ProductsList from "../components/ProductsList.vue";
 import ProductModal from "../components/ProductModal.vue";
 
 export default {
-  components: { Header, FooterComp, ProductList, ProductModal },
+  components: { Header, FooterComp, ProductsList, ProductModal },
   data() {
     return {
       product: null,

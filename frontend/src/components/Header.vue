@@ -33,7 +33,6 @@
             alt="login"
             @click="openLogin"
           />
-          <!-- Lägg till hover funktion -->
           <img
             class="menu-img"
             src="../assets/icons/menu.svg"
@@ -65,7 +64,7 @@
               this.$store.state.user.currentUser.role == 'admin'
             "
           >
-            Admin view
+            Admin sida
           </router-link>
         </div>
       </nav>
