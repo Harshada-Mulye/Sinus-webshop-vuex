@@ -11,23 +11,17 @@
             @click.prevent="removeProductFromCart(item.product)"
           />
         </section>
-        <!-- <div> -->
         <span> {{ item.product.price * item.quantity }}</span>
-
-        <section class="quantity">
-          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span
-          ><span @click="increment(item)">+</span>
+           <section class="quantity">
+          <span @click="decrement(item)">-</span><span>{{ item.quantity }}</span>
+          <span @click="increment(item)">+</span>
         </section>
-
-        <!-- </div> -->
         <hr />
       </section>
     </section>
     <div>
-      <!-- <hr /> -->
-      <p>Summa:{{ cartTotalPrice  }}</p>
-      <!-- <a href="#" @click.prevent="">Clear Cart</a> -->
-      <button v-on:click="checkOut">Checkout</button>
+    <p>Summa:{{ cartTotalPrice  }}</p>
+     <button v-on:click="checkOut">Checkout</button>
     </div>
   </section>
 </template>
