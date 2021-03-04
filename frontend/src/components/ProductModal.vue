@@ -165,4 +165,26 @@ button:hover {
   cursor: pointer;
   transform: scale(1.1, 1.1);
 }
+
+@media only screen and (max-width: 1500px) {
+  .product-img {
+    width: 85%;
+  }
+
+  .img-container {
+    margin-top: -40px;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .modal {
+    width: 50%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
 </style>

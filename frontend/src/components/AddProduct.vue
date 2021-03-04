@@ -154,4 +154,14 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 1500px) {
+  .container {
+    top: 53%;
+  }
+
+  textarea {
+    height: 40px;
+  }
+}
 </style>
