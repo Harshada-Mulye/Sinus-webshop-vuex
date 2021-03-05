@@ -1,7 +1,7 @@
 <template>
   <section class="checkout">
     <h2>Kassa</h2>
-    <form @submit="payment">
+    <form @submit.prevent="payment">
       <input type="text" placeholder="Namn" required v-model="name" />
       <input type="email" placeholder="E-post" required v-model="email" />
       <input type="text" placeholder="Adress" required v-model="address" />
