@@ -79,7 +79,7 @@ export default {
   align-items: center;
   height: 140%;
   width: 100%;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
